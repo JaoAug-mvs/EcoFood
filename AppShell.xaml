@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="EcoFood.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:EcoFood.Views"
+    FlyoutBehavior="Disabled"
+    Shell.TabBarForegroundColor="{StaticResource Primary}"
+    Shell.TabBarUnselectedColor="{StaticResource TextSecondary}"
+    Shell.TabBarBackgroundColor="{StaticResource Surface}"
+    Shell.TabBarTitleColor="{StaticResource TextPrimary}"
+    Shell.BackgroundColor="{StaticResource Background}"
+    Title="EcoFood">
+
+    <!--
+        Navegação principal em abas conforme briefing + rotas nomeadas utilizadas por GoToAsync.
+        Cada aba encapsula fluxos paralelos mantendo navegações modais por cima apenas quando aplicável.
+    -->
+    <Tab Title="Início" Route="HomeTab" Icon="icon_home.png">
+        <ShellContent Route="HomeRoot" Title="EcoFood • Início" ContentTemplate="{DataTemplate views:HomePage}" />
+    </Tab>
+
+    <Tab Title="Explorar" Route="ExploreTab" Icon="icon_search.png">
+        <ShellContent Route="ExploreRoot" Title="Explorar ofertas" ContentTemplate="{DataTemplate views:ExplorePage}" />
+    </Tab>
+
+    <Tab Title="Favoritos" Route="FavoritesTab" Icon="icon_heart.png">
+        <ShellContent Route="FavoritesRoot" Title="Salvos ❤️" ContentTemplate="{DataTemplate views:FavoritesPage}" />
+    </Tab>
+
+    <Tab Title="Reservas" Route="OrdersTab" Icon="icon_bag.png">
+        <ShellContent Route="OrdersRoot" Title="Reservas 📅" ContentTemplate="{DataTemplate views:OrdersPage}" />
+    </Tab>
+
+    <Tab Title="Perfil" Route="ProfileTab" Icon="icon_user.png">
+        <ShellContent Route="ProfileRoot" Title="Meu perfil" ContentTemplate="{DataTemplate views:ProfilePage}" />
+    </Tab>
+</Shell>
+

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="EcoFood.Views.SettingsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Configurações"
+    Padding="26">
+
+    <VerticalStackLayout Padding="26" Spacing="16">
+        <Label FontFamily="OpenSansSemibold" FontSize="22" Text="Configurações EcoFood" />
+        <Label
+            FontFamily="OpenSansRegular"
+            FontSize="14"
+            LineHeight="1.32"
+            Text="Placeholders apenas para curso/demo: filtros salvos em nuvem, idioma PT-BR/EN-US e opt-in granular de SMS chegam quando houver persistência configurada neste protótipo."
+            TextColor="{StaticResource Gray600}" />
+        <Button CornerRadius="24" HorizontalOptions="Fill" Text="Fechar esta tela" Clicked="OnCloseClicked" />
+    </VerticalStackLayout>
+</ContentPage>

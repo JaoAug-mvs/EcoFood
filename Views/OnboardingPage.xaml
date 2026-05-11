@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="EcoFood.Views.OnboardingPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:EcoFood.ViewModels"
+    x:DataType="vm:OnboardingViewModel"
+    BackgroundColor="{StaticResource Background}"
+    Shell.NavBarIsVisible="False"
+    Padding="0">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <!-- Top bar: logo + Pular -->
+        <Grid
+            Grid.Row="0"
+            Padding="20,20,20,0"
+            ColumnDefinitions="Auto,*,Auto">
+            <HorizontalStackLayout Grid.Column="0" Spacing="0" VerticalOptions="Center">
+                <Label Text="Eco" FontFamily="OpenSansSemibold" FontSize="22" TextColor="{StaticResource TextPrimary}"/>
+                <Label Text="Food" FontFamily="OpenSansSemibold" FontSize="22" TextColor="{StaticResource Primary}"/>
+            </HorizontalStackLayout>
+            <Button
+                Grid.Column="2"
+                Text="Pular"
+                FontFamily="OpenSansSemibold"
+                FontSize="14"
+                BackgroundColor="Transparent"
+                TextColor="{StaticResource TextSecondary}"
+                Clicked="OnSkipClicked"
+                HorizontalOptions="End"
+                VerticalOptions="Center" />
+        </Grid>
+
+        <!-- Carousel -->
+        <CarouselView
+            x:Name="SlidesCarousel"
+            Grid.Row="1"
+            ItemsSource="{Binding Slides}"
+            IndicatorView="OnboardingIndicator"
+            Margin="0,0,0,0">
+            <CarouselView.ItemTemplate>
+                <DataTemplate x:DataType="vm:OnboardingSlide">
+                    <VerticalStackLayout
+                        Spacing="24"
+                        Padding="28,32,28,0"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="Center">
+                        <Image
+                            Source="{Binding ImageSource}"
+                            Aspect="AspectFit"
+                            HeightRequest="240"
+                            HorizontalOptions="Center" />
+                        <VerticalStackLayout Spacing="14">
+                            <Label
+                                FontFamily="OpenSansSemibold"
+                                FontSize="26"
+                                Text="{Binding Title}"
+                                TextColor="{StaticResource TextPrimary}"
+                                HorizontalTextAlignment="Center"
+                                LineBreakMode="WordWrap"/>
+                            <Label
+                                FontFamily="OpenSansRegular"
+                                FontSize="15"
+                                Text="{Binding Subtitle}"
+                                TextColor="{StaticResource TextSecondary}"
+                                HorizontalTextAlignment="Center"
+                                LineBreakMode="WordWrap"
+                                LineHeight="1.5"
+                                Margin="8,0"/>
+                        </VerticalStackLayout>
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+
+        <!-- Bottom: dots + button -->
+        <VerticalStackLayout Grid.Row="2" Spacing="16" Padding="24,16,24,40">
+            <IndicatorView
+                x:Name="OnboardingIndicator"
+                IndicatorColor="{StaticResource Border}"
+                SelectedIndicatorColor="{StaticResource Primary}"
+                IndicatorSize="10"
+                HorizontalOptions="Center" />
+            <Button
+                Text="{Binding PrimaryButtonText}"
+                Clicked="OnStartClicked"
+                CornerRadius="28"
+                HeightRequest="56"
+                FontFamily="OpenSansSemibold"
+                FontSize="17"
+                BackgroundColor="{StaticResource Primary}"
+                TextColor="White" />
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

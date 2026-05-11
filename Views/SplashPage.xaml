@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="EcoFood.Views.SplashPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="White">
+
+    <Grid RowDefinitions="*,Auto">
+        <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="20" Padding="32,0">
+            <Image Source="logo_verde_sem_fundo.png" WidthRequest="120" HeightRequest="120" Aspect="AspectFit" HorizontalOptions="Center"/>
+            <HorizontalStackLayout Spacing="0" HorizontalOptions="Center">
+                <Label Text="Eco" FontSize="42" FontFamily="OpenSansSemibold" TextColor="#1F2937" />
+                <Label Text="Food" FontSize="42" FontFamily="OpenSansSemibold" TextColor="#2ECC71" />
+            </HorizontalStackLayout>
+            <Label
+                Text="Menos desperdício,&#10;mais oportunidades."
+                FontSize="16"
+                TextColor="#6B7280"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                LineHeight="1.5"/>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout Grid.Row="1" Padding="24,0,24,48" Spacing="12">
+            <HorizontalStackLayout Spacing="8" HorizontalOptions="Center" Margin="0,0,0,12">
+                <BoxView Color="#2ECC71" WidthRequest="28" HeightRequest="8" CornerRadius="4"/>
+                <BoxView Color="#E5E7EB" WidthRequest="8" HeightRequest="8" CornerRadius="4"/>
+                <BoxView Color="#E5E7EB" WidthRequest="8" HeightRequest="8" CornerRadius="4"/>
+            </HorizontalStackLayout>
+            <Button
+                Text="Começar"
+                BackgroundColor="#2ECC71"
+                TextColor="White"
+                CornerRadius="28"
+                HeightRequest="56"
+                FontFamily="OpenSansSemibold"
+                FontSize="17"
+                Clicked="OnStartOnboardingClicked" />
+            <Button
+                Text="Entrar"
+                BackgroundColor="Transparent"
+                TextColor="#6B7280"
+                FontFamily="OpenSansSemibold"
+                FontSize="15"
+                HeightRequest="44"
+                Clicked="OnLoginClicked" />
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

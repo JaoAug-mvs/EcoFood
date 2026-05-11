@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="EcoFood.Views.ConfirmationPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:EcoFood.ViewModels"
+    x:DataType="vm:ConfirmationViewModel"
+    Padding="16,16,16,0"
+    BackgroundColor="{StaticResource Background}"
+    Title="Confirmar">
+
+    <Grid RowDefinitions="*,Auto" RowSpacing="0">
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout Spacing="20" Padding="0,8,0,16">
+
+                <!-- Step indicator com labels (passo 2 ativo) -->
+                <Grid ColumnDefinitions="Auto,*,Auto,*,Auto" ColumnSpacing="0" HorizontalOptions="Center">
+                    <!-- Step 1 (done) -->
+                    <VerticalStackLayout HorizontalOptions="Center" Spacing="6">
+                        <Border
+                            WidthRequest="36" HeightRequest="36"
+                            Background="{StaticResource Primary}"
+                            StrokeThickness="0"
+                            StrokeShape="RoundRectangle 18"
+                            HorizontalOptions="Center">
+                            <Label Text="1" TextColor="White" FontFamily="OpenSansSemibold" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Border>
+                        <Label Text="Reserva" FontSize="11" TextColor="{StaticResource Primary}" FontFamily="OpenSansSemibold" HorizontalTextAlignment="Center"/>
+                    </VerticalStackLayout>
+                    <!-- Line (green) -->
+                    <BoxView Grid.Column="1" HeightRequest="2" BackgroundColor="{StaticResource Primary}" VerticalOptions="Start" Margin="4,17,4,0" WidthRequest="60"/>
+                    <!-- Step 2 (active) -->
+                    <VerticalStackLayout Grid.Column="2" HorizontalOptions="Center" Spacing="6">
+                        <Border
+                            WidthRequest="36" HeightRequest="36"
+                            Background="{StaticResource Primary}"
+                            StrokeThickness="0"
+                            StrokeShape="RoundRectangle 18"
+                            HorizontalOptions="Center">
+                            <Label Text="2" TextColor="White" FontFamily="OpenSansSemibold" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Border>
+                        <Label Text="Confirmação" FontSize="11" TextColor="{StaticResource Primary}" FontFamily="OpenSansSemibold" HorizontalTextAlignment="Center"/>
+                    </VerticalStackLayout>
+                    <!-- Line -->
+                    <BoxView Grid.Column="3" HeightRequest="2" BackgroundColor="{StaticResource Border}" VerticalOptions="Start" Margin="4,17,4,0" WidthRequest="60"/>
+                    <!-- Step 3 -->
+                    <VerticalStackLayout Grid.Column="4" HorizontalOptions="Center" Spacing="6">
+                        <Border
+                            WidthRequest="36" HeightRequest="36"
+                            Background="{StaticResource Surface}"
+                            Stroke="{StaticResource Border}"
+                            StrokeThickness="1"
+                            StrokeShape="RoundRectangle 18"
+                            HorizontalOptions="Center">
+                            <Label Text="3" TextColor="{StaticResource TextSecondary}" FontFamily="OpenSansSemibold" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Border>
+                        <Label Text="Pronto" FontSize="11" TextColor="{StaticResource TextSecondary}" HorizontalTextAlignment="Center"/>
+                    </VerticalStackLayout>
+                </Grid>
+
+                <!-- Resumo da reserva -->
+                <Border Stroke="{StaticResource Border}" StrokeThickness="1" Background="{StaticResource Surface}" StrokeShape="RoundRectangle 20" Padding="16">
+                    <VerticalStackLayout Spacing="16">
+                        <Label FontFamily="OpenSansSemibold" FontSize="13" Text="Resumo da reserva" TextColor="{StaticResource TextSecondary}"/>
+
+                        <!-- Product row -->
+                        <Grid ColumnDefinitions="64,*,Auto" ColumnSpacing="14">
+                            <Border WidthRequest="64" HeightRequest="64" StrokeShape="RoundRectangle 12" StrokeThickness="0" Background="{StaticResource SurfaceMuted}">
+                                <Image Aspect="AspectFill" Source="{Binding ProductImageUrl}" />
+                            </Border>
+                            <VerticalStackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center">
+                                <Label FontFamily="OpenSansSemibold" FontSize="15" Text="{Binding ProductName}" TextColor="{StaticResource TextPrimary}" LineBreakMode="TailTruncation"/>
+                                <Label FontSize="13" Text="{Binding RestaurantName}" TextColor="{StaticResource TextSecondary}" />
+                                <Label FontSize="12" Text="{Binding OrderQuantity, StringFormat='{0} item'}" TextColor="{StaticResource TextSecondary}" />
+                            </VerticalStackLayout>
+                            <Label Grid.Column="2" FontFamily="OpenSansSemibold" FontSize="15" Text="{Binding TotalFormatted}" TextColor="{StaticResource Primary}" VerticalOptions="Center"/>
+                        </Grid>
+
+                        <BoxView HeightRequest="1" BackgroundColor="{StaticResource Border}"/>
+
+                        <!-- Details -->
+                        <VerticalStackLayout Spacing="12">
+                            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                                <Image Source="icon_location.png" WidthRequest="16" HeightRequest="16" VerticalOptions="Center"/>
+                                <VerticalStackLayout Grid.Column="1" Spacing="2">
+                                    <Label FontSize="12" Text="Retirada" TextColor="{StaticResource TextSecondary}"/>
+                                    <Label FontFamily="OpenSansSemibold" FontSize="14" Text="{Binding AddressLine}" TextColor="{StaticResource TextPrimary}" LineBreakMode="TailTruncation"/>
+                                    <Label FontSize="12" Text="{Binding DistanceLine}" TextColor="{StaticResource TextSecondary}"/>
+                                </VerticalStackLayout>
+                            </Grid>
+                            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                                <Image Source="icon_clock.png" WidthRequest="16" HeightRequest="16" VerticalOptions="Center"/>
+                                <VerticalStackLayout Grid.Column="1" Spacing="2">
+                                    <Label FontSize="12" Text="Até quando posso retirar?" TextColor="{StaticResource TextSecondary}"/>
+                                    <Label FontFamily="OpenSansSemibold" FontSize="14" Text="{Binding PickupLine}" TextColor="{StaticResource TextPrimary}"/>
+                                </VerticalStackLayout>
+                            </Grid>
+                            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                                <Image Source="icon_payment.png" WidthRequest="16" HeightRequest="16" VerticalOptions="Center"/>
+                                <VerticalStackLayout Grid.Column="1" Spacing="2">
+                                    <Label FontSize="12" Text="Pagamento" TextColor="{StaticResource TextSecondary}"/>
+                                    <Label FontFamily="OpenSansSemibold" FontSize="14" Text="Pagar ao retirar: Dinheiro, Pix ou cartão" TextColor="{StaticResource TextPrimary}"/>
+                                </VerticalStackLayout>
+                            </Grid>
+                        </VerticalStackLayout>
+
+                        <BoxView HeightRequest="1" BackgroundColor="{StaticResource Border}"/>
+
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Label FontFamily="OpenSansSemibold" FontSize="16" Text="Total" TextColor="{StaticResource TextPrimary}"/>
+                            <Label Grid.Column="1" FontFamily="OpenSansSemibold" FontSize="20" Text="{Binding TotalFormatted}" TextColor="{StaticResource Primary}"/>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- CTAs fixos -->
+        <VerticalStackLayout Grid.Row="1" Padding="0,12,0,28" Spacing="10" BackgroundColor="{StaticResource Background}">
+            <Button
+                CornerRadius="28"
+                HeightRequest="56"
+                HorizontalOptions="Fill"
+                Text="Confirmar reserva"
+                TextColor="White"
+                FontSize="17"
+                FontFamily="OpenSansSemibold"
+                Command="{Binding ConfirmReservationCommand}" />
+            <Button
+                BackgroundColor="Transparent"
+                BorderColor="{StaticResource Border}"
+                BorderWidth="1"
+                CornerRadius="28"
+                HeightRequest="48"
+                HorizontalOptions="Fill"
+                Text="Voltar e ajustar"
+                TextColor="{StaticResource TextSecondary}"
+                FontSize="15"
+                FontFamily="OpenSansSemibold"
+                Command="{Binding EditReservationCommand}" />
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

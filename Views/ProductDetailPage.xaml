@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="EcoFood.Views.ProductDetailPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:EcoFood.ViewModels"
+    x:DataType="vm:ProductDetailViewModel"
+    Padding="0"
+    BackgroundColor="{StaticResource Background}"
+    Title="Detalhes">
+
+    <Grid RowDefinitions="*,Auto" RowSpacing="0">
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout Padding="0,0,0,24" Spacing="0">
+
+                <!-- Hero image (full-width, edge-to-edge top) -->
+                <Grid HeightRequest="280">
+                    <Image Aspect="AspectFill" IsVisible="{Binding HasProduct}" Source="{Binding Product.ImageUrl}" />
+                    <!-- Gradient overlay at bottom of image -->
+                    <BoxView VerticalOptions="End" HeightRequest="80" HorizontalOptions="Fill" Opacity="0.35">
+                        <BoxView.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                <GradientStop Color="Transparent" Offset="0"/>
+                                <GradientStop Color="#000000" Offset="1"/>
+                            </LinearGradientBrush>
+                        </BoxView.Background>
+                    </BoxView>
+                    <!-- Discount badge -->
+                    <Border
+                        Margin="14"
+                        HorizontalOptions="Start"
+                        VerticalOptions="End"
+                        Padding="10,6"
+                        Background="#E53935"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 8">
+                        <Label FontFamily="OpenSansSemibold" FontSize="14" Text="{Binding BadgeDiscount}" TextColor="White" />
+                    </Border>
+                    <!-- Favorite button -->
+                    <Border
+                        HorizontalOptions="End"
+                        VerticalOptions="Start"
+                        Margin="14"
+                        WidthRequest="44" HeightRequest="44"
+                        BackgroundColor="White"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 22">
+                        <Border.Shadow>
+                            <Shadow Brush="#000000" Opacity="0.15" Radius="12" Offset="0,3" />
+                        </Border.Shadow>
+                        <Button
+                            Style="{x:Null}"
+                            BackgroundColor="Transparent"
+                            Padding="0"
+                            CornerRadius="22"
+                            WidthRequest="44" HeightRequest="44"
+                            Text="{Binding FavoriteGlyph}"
+                            FontSize="18"
+                            Command="{Binding ToggleFavoriteCommand}"
+                            TextColor="{StaticResource Primary}" />
+                    </Border>
+                </Grid>
+
+                <!-- Product info card -->
+                <VerticalStackLayout Padding="16,16,16,0" Spacing="14">
+
+                    <!-- Name + Restaurant + Rating -->
+                    <VerticalStackLayout Spacing="6">
+                        <Label FontFamily="OpenSansSemibold" FontSize="22" Text="{Binding TitleDisplay}" TextColor="{StaticResource TextPrimary}" />
+                        <HorizontalStackLayout Spacing="6">
+                            <Image Source="icon_star.png" WidthRequest="14" HeightRequest="14" VerticalOptions="Center" />
+                            <Label FontSize="14" Text="{Binding RatingFormatted}" TextColor="{StaticResource TextPrimary}" VerticalOptions="Center"/>
+                            <Label FontSize="14" Text="·" TextColor="{StaticResource TextSecondary}" VerticalOptions="Center"/>
+                            <Label FontSize="14" Text="{Binding RestaurantDisplay}" TextColor="{StaticResource TextSecondary}" VerticalOptions="Center"/>
+                            <Label FontSize="14" Text="·" TextColor="{StaticResource TextSecondary}" VerticalOptions="Center"/>
+                            <Label FontSize="14" Text="{Binding DistanceFormatted}" TextColor="{StaticResource TextSecondary}" VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+
+                    <!-- Description -->
+                    <Label FontFamily="OpenSansRegular" FontSize="14" LineHeight="1.5"
+                           Text="{Binding DescriptionFormatted}"
+                           TextColor="{StaticResource TextSecondary}" />
+
+                    <!-- Price block -->
+                    <VerticalStackLayout Spacing="6">
+                        <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                            <Label FontSize="14" Text="{Binding OldPriceFormatted}" TextColor="{StaticResource TextSecondary}" TextDecorations="Strikethrough" VerticalOptions="End"/>
+                            <Label FontFamily="OpenSansSemibold" FontSize="28" Text="{Binding NewPriceFormatted}" TextColor="{StaticResource Primary}" VerticalOptions="End"/>
+                        </HorizontalStackLayout>
+                        <Border
+                            Padding="12,6"
+                            BackgroundColor="{StaticResource PrimaryLight}"
+                            StrokeThickness="0"
+                            StrokeShape="RoundRectangle 8"
+                            HorizontalOptions="Start">
+                            <Label FontFamily="OpenSansSemibold" FontSize="13" Text="{Binding SavingsFormatted}" TextColor="{StaticResource TextAccent}"/>
+                        </Border>
+                    </VerticalStackLayout>
+
+                    <!-- Info pills row -->
+                    <Grid ColumnDefinitions="*,1,*,1,*" ColumnSpacing="0">
+                        <!-- Pickup -->
+                        <VerticalStackLayout HorizontalOptions="Center" Spacing="4">
+                            <Image Source="icon_clock.png" WidthRequest="18" HeightRequest="18" HorizontalOptions="Center"/>
+                            <Label FontFamily="OpenSansSemibold" FontSize="11" Text="{Binding PickupShort}" TextColor="{StaticResource TextPrimary}" HorizontalTextAlignment="Center" LineBreakMode="WordWrap"/>
+                        </VerticalStackLayout>
+                        <!-- Divider -->
+                        <BoxView Grid.Column="1" BackgroundColor="{StaticResource Border}" WidthRequest="1" HeightRequest="36" VerticalOptions="Center"/>
+                        <!-- Units left -->
+                        <VerticalStackLayout Grid.Column="2" HorizontalOptions="Center" Spacing="4">
+                            <Image Source="icon_bag.png" WidthRequest="18" HeightRequest="18" HorizontalOptions="Center"/>
+                            <Label FontFamily="OpenSansSemibold" FontSize="11" Text="{Binding UnitsLeftShort}" TextColor="{StaticResource TextPrimary}" HorizontalTextAlignment="Center"/>
+                        </VerticalStackLayout>
+                        <!-- Divider -->
+                        <BoxView Grid.Column="3" BackgroundColor="{StaticResource Border}" WidthRequest="1" HeightRequest="36" VerticalOptions="Center"/>
+                        <!-- Category -->
+                        <VerticalStackLayout Grid.Column="4" HorizontalOptions="Center" Spacing="4">
+                            <Image Source="icon_heart.png" WidthRequest="18" HeightRequest="18" HorizontalOptions="Center"/>
+                            <Label FontFamily="OpenSansSemibold" FontSize="11" Text="{Binding CategoryLabel}" TextColor="{StaticResource TextPrimary}" HorizontalTextAlignment="Center"/>
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <!-- Sobre o estabelecimento -->
+                    <Border
+                        Padding="16"
+                        BackgroundColor="{StaticResource Surface}"
+                        Stroke="{StaticResource Border}"
+                        StrokeThickness="1"
+                        StrokeShape="RoundRectangle 16">
+                        <Grid ColumnDefinitions="*,Auto">
+                            <VerticalStackLayout Spacing="6">
+                                <Label FontFamily="OpenSansSemibold" FontSize="13" Text="Sobre o estabelecimento" TextColor="{StaticResource TextSecondary}"/>
+                                <Label FontFamily="OpenSansSemibold" FontSize="16" Text="{Binding RestaurantDisplay}" TextColor="{StaticResource TextPrimary}"/>
+                                <HorizontalStackLayout Spacing="6">
+                                    <Image Source="icon_location.png" WidthRequest="14" HeightRequest="14" VerticalOptions="Center"/>
+                                    <Label FontSize="13" Text="{Binding RestaurantAddress}" TextColor="{StaticResource TextSecondary}" VerticalOptions="Center" LineBreakMode="TailTruncation"/>
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                            <Label Grid.Column="1" FontFamily="OpenSansSemibold" FontSize="13" Text="Ver perfil" TextColor="{StaticResource Primary}" VerticalOptions="Center"/>
+                        </Grid>
+                    </Border>
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- CTA fixo -->
+        <Grid Grid.Row="1" Padding="16,12,16,20" BackgroundColor="{StaticResource Background}">
+            <Button
+                Style="{x:Null}"
+                CornerRadius="28"
+                HeightRequest="56"
+                HorizontalOptions="Fill"
+                IsEnabled="{Binding HasProduct}"
+                Command="{Binding StartReservationCommand}"
+                Text="Reservar agora"
+                BackgroundColor="{StaticResource Primary}"
+                TextColor="White"
+                FontSize="17"
+                FontFamily="OpenSansSemibold" />
+        </Grid>
+    </Grid>
+</ContentPage>

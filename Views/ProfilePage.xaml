@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="EcoFood.Views.ProfilePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:EcoFood.ViewModels"
+    x:DataType="vm:ProfileViewModel"
+    Padding="0"
+    BackgroundColor="{StaticResource Background}"
+    Title="Perfil">
+
+    <Grid RowDefinitions="Auto,*">
+        <!-- Header with gear icon -->
+        <Grid Grid.Row="0" Padding="18,18,18,12" ColumnDefinitions="*,Auto">
+            <Label FontFamily="OpenSansSemibold" FontSize="26" Text="Perfil" TextColor="{StaticResource TextPrimary}" VerticalOptions="Center"/>
+            <Border
+                Grid.Column="1"
+                WidthRequest="42" HeightRequest="42"
+                StrokeThickness="0"
+                StrokeShape="RoundRectangle 21"
+                BackgroundColor="{StaticResource Surface}">
+                <ImageButton
+                    Style="{x:Null}"
+                    BackgroundColor="Transparent"
+                    WidthRequest="42" HeightRequest="42"
+                    Padding="11"
+                    Source="icon_edit.png"
+                    Command="{Binding OpenSettingsShortcutCommand}"/>
+            </Border>
+        </Grid>
+
+        <ScrollView Grid.Row="1" BackgroundColor="{StaticResource Background}">
+            <VerticalStackLayout Padding="18,0,18,32" Spacing="12">
+
+                <!-- Menu items -->
+                <Border Background="{StaticResource Surface}" Stroke="{StaticResource Border}" StrokeThickness="1" StrokeShape="RoundRectangle 16" HorizontalOptions="Fill">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OpenAddressesCommand}" />
+                    </Border.GestureRecognizers>
+                    <Grid Padding="18,16" ColumnDefinitions="Auto,*,Auto" ColumnSpacing="14">
+                        <Image Source="icon_location.png" WidthRequest="22" HeightRequest="22" Aspect="AspectFit" VerticalOptions="Center"/>
+                        <Label Grid.Column="1" FontFamily="OpenSansSemibold" FontSize="15" Text="Endereços" TextColor="{StaticResource TextPrimary}" VerticalOptions="Center"/>
+                        <Label Grid.Column="2" FontFamily="OpenSansSemibold" FontSize="18" Text="›" TextColor="{StaticResource TextSecondary}" VerticalOptions="Center"/>
+                    </Grid>
+                </Border>
+
+                <Border Background="{StaticResource Surface}" Stroke="{StaticResource Border}" StrokeThickness="1" StrokeShape="RoundRectangle 16" HorizontalOptions="Fill">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OpenPaymentMethodsCommand}" />
+                    </Border.GestureRecognizers>
+                    <Grid Padding="18,16" ColumnDefinitions="Auto,*,Auto" ColumnSpacing="14">
+                        <Image Source="icon_payment.png" WidthRequest="22" HeightRequest="22" Aspect="AspectFit" VerticalOptions="Center"/>
+                        <Label Grid.Column="1" FontFamily="OpenSansSemibold" FontSize="15" Text="Formas de pagamento" TextColor="{StaticResource TextPrimary}" VerticalOptions="Center"/>
+                        <Label Grid.Column="2" FontFamily="OpenSansSemibold" FontSize="18" Text="›" TextColor="{StaticResource TextSecondary}" VerticalOptions="Center"/>
+                    </Grid>
+                </Border>
+
+                <Border Background="{StaticResource Surface}" Stroke="{StaticResource Border}" StrokeThickness="1" StrokeShape="RoundRectangle 16" HorizontalOptions="Fill">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OpenFoodPreferencesCommand}" />
+                    </Border.GestureRecognizers>
+                    <Grid Padding="18,16" ColumnDefinitions="Auto,*,Auto" ColumnSpacing="14">
+                        <Image Source="icon_heart.png" WidthRequest="22" HeightRequest="22" Aspect="AspectFit" VerticalOptions="Center"/>
+                        <Label Grid.Column="1" FontFamily="OpenSansSemibold" FontSize="15" Text="Preferências alimentares" TextColor="{StaticResource TextPrimary}" VerticalOptions="Center"/>
+                        <Label Grid.Column="2" FontFamily="OpenSansSemibold" FontSize="18" Text="›" TextColor="{StaticResource TextSecondary}" VerticalOptions="Center"/>
+                    </Grid>
+                </Border>
+
+                <Border Background="{StaticResource Surface}" Stroke="{StaticResource Border}" StrokeThickness="1" StrokeShape="RoundRectangle 16" HorizontalOptions="Fill">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OpenNotificationsSettingsCommand}" />
+                    </Border.GestureRecognizers>
+                    <Grid Padding="18,16" ColumnDefinitions="Auto,*,Auto" ColumnSpacing="14">
+                        <Image Source="icon_alert.png" WidthRequest="22" HeightRequest="22" Aspect="AspectFit" VerticalOptions="Center"/>
+                        <Label Grid.Column="1" FontFamily="OpenSansSemibold" FontSize="15" Text="Notificações" TextColor="{StaticResource TextPrimary}" VerticalOptions="Center"/>
+                        <Label Grid.Column="2" FontFamily="OpenSansSemibold" FontSize="18" Text="›" TextColor="{StaticResource TextSecondary}" VerticalOptions="Center"/>
+                    </Grid>
+                </Border>
+
+                <Border Background="{StaticResource Surface}" Stroke="{StaticResource Border}" StrokeThickness="1" StrokeShape="RoundRectangle 16" HorizontalOptions="Fill">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OpenSupportCommand}" />
+                    </Border.GestureRecognizers>
+                    <Grid Padding="18,16" ColumnDefinitions="Auto,*,Auto" ColumnSpacing="14">
+                        <Image Source="icon_search.png" WidthRequest="22" HeightRequest="22" Aspect="AspectFit" VerticalOptions="Center"/>
+                        <Label Grid.Column="1" FontFamily="OpenSansSemibold" FontSize="15" Text="Ajuda e suporte" TextColor="{StaticResource TextPrimary}" VerticalOptions="Center"/>
+                        <Label Grid.Column="2" FontFamily="OpenSansSemibold" FontSize="18" Text="›" TextColor="{StaticResource TextSecondary}" VerticalOptions="Center"/>
+                    </Grid>
+                </Border>
+
+                <Border Background="{StaticResource Surface}" Stroke="{StaticResource Border}" StrokeThickness="1" StrokeShape="RoundRectangle 16" HorizontalOptions="Fill">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OpenAboutCommand}" />
+                    </Border.GestureRecognizers>
+                    <Grid Padding="18,16" ColumnDefinitions="Auto,*,Auto" ColumnSpacing="14">
+                        <Image Source="icon_home.png" WidthRequest="22" HeightRequest="22" Aspect="AspectFit" VerticalOptions="Center"/>
+                        <Label Grid.Column="1" FontFamily="OpenSansSemibold" FontSize="15" Text="Sobre o EcoFood" TextColor="{StaticResource TextPrimary}" VerticalOptions="Center"/>
+                        <Label Grid.Column="2" FontFamily="OpenSansSemibold" FontSize="18" Text="›" TextColor="{StaticResource TextSecondary}" VerticalOptions="Center"/>
+                    </Grid>
+                </Border>
+
+                <!-- Sair -->
+                <Border
+                    Margin="0,8,0,0"
+                    Background="{StaticResource Surface}"
+                    Stroke="{StaticResource Border}"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 16">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SignOutCommand}" />
+                    </Border.GestureRecognizers>
+                    <Grid Padding="18,16" ColumnDefinitions="Auto,*" ColumnSpacing="14">
+                        <Image Source="icon_bag.png" WidthRequest="22" HeightRequest="22" Aspect="AspectFit" VerticalOptions="Center"/>
+                        <Label Grid.Column="1" FontFamily="OpenSansSemibold" FontSize="15" Text="Sair" TextColor="#DC2626" VerticalOptions="Center"/>
+                    </Grid>
+                </Border>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
