@@ -19,7 +19,7 @@ public partial class ExploreViewModel : ObservableObject
 		_mock = mock;
 		_favs = favs;
 		foreach (var c in mock.Categories)
-			Categories.Add(new CategoryChip { Key = c.Key, Title = c.Title });
+			Categories.Add(new CategoryChip { Key = c.Key, Title = c.Title, Icon = c.Icon });
 
 		UpdateSelectedCategory();
 		ApplyFilter();
@@ -69,17 +69,7 @@ public partial class ExploreViewModel : ObservableObject
 		IEnumerable<Product> query = _mock.AllProducts;
 
 		if (!string.Equals(SelectedCategoryKey, "Todos", StringComparison.OrdinalIgnoreCase))
-		{
-			query = SelectedCategoryKey switch
-			{
-				"Restaurantes" => query.Where(p => string.Equals(p.Category, "Restaurantes", StringComparison.OrdinalIgnoreCase)),
-				"Vegano" => query.Where(p => string.Equals(p.Category, "Vegano", StringComparison.OrdinalIgnoreCase)),
-				"Padaria" => query.Where(p => string.Equals(p.Category, "Padaria", StringComparison.OrdinalIgnoreCase)),
-				"Doces" => query.Where(p => string.Equals(p.Category, "Doces", StringComparison.OrdinalIgnoreCase)),
-				"Japones" => query.Where(p => string.Equals(p.Category, "Japones", StringComparison.OrdinalIgnoreCase)),
-				_ => query
-			};
-		}
+			query = query.Where(p => string.Equals(p.Category, SelectedCategoryKey, StringComparison.OrdinalIgnoreCase));
 
 		if (!string.IsNullOrWhiteSpace(q))
 		{

@@ -12,5 +12,8 @@ public sealed partial class CategoryChip : ObservableObject
 	string title = string.Empty;
 
 	[ObservableProperty]
+	string icon = string.Empty;
+
+	[ObservableProperty]
 	bool isSelected;
 }

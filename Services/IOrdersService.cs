@@ -8,4 +8,5 @@ public interface IOrdersService
 {
 	ObservableCollection<Order> Orders { get; }
 	void Add(Order order);
+	void Remove(string orderId);
 }

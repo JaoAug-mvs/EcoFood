@@ -11,6 +11,7 @@
     <Color x:Key="PrimaryLight">#E6F8EA</Color>
     <Color x:Key="Secondary">#34D399</Color>
     <Color x:Key="Success">#2ECC71</Color>
+    <Color x:Key="ErrorBadge">#E53935</Color>
 
     <!-- Global backgrounds and surfaces -->
     <Color x:Key="Background">#F9FBF8</Color>

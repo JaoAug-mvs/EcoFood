@@ -10,6 +10,7 @@ public partial class App : MauiApplication
 	public App()
 	{
 		InitializeComponent();
+		Services.ThemeService.LoadSaved();
 	}
 
 	protected override MauiWindow CreateWindow(IActivationState? activationState)
@@ -17,9 +18,10 @@ public partial class App : MauiApplication
 		var services = Current?.Handler?.MauiContext?.Services
 			?? throw new InvalidOperationException("Serviços MAUI indisponíveis em CreateWindow.");
 
-		var splash = services.GetRequiredService<SplashPage>();
+		// Splash sempre aparece — é a tela de boas-vindas/login
+		var startPage = services.GetRequiredService<SplashPage>();
 
-		var window = new MauiWindow(splash)
+		var window = new MauiWindow(startPage)
 		{
 			Title = "EcoFood",
 			Width = 420,

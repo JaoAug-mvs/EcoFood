@@ -6,7 +6,7 @@
     xmlns:vm="clr-namespace:EcoFood.ViewModels"
     x:DataType="vm:ProductDetailViewModel"
     Padding="0"
-    BackgroundColor="{StaticResource Background}"
+    BackgroundColor="{DynamicResource Background}"
     Title="Detalhes">
 
     <Grid RowDefinitions="*,Auto" RowSpacing="0">
@@ -31,7 +31,7 @@
                         HorizontalOptions="Start"
                         VerticalOptions="End"
                         Padding="10,6"
-                        Background="#E53935"
+                        Background="{StaticResource ErrorBadge}"
                         StrokeThickness="0"
                         StrokeShape="RoundRectangle 8">
                         <Label FontFamily="OpenSansSemibold" FontSize="14" Text="{Binding BadgeDiscount}" TextColor="White" />
@@ -66,35 +66,35 @@
 
                     <!-- Name + Restaurant + Rating -->
                     <VerticalStackLayout Spacing="6">
-                        <Label FontFamily="OpenSansSemibold" FontSize="22" Text="{Binding TitleDisplay}" TextColor="{StaticResource TextPrimary}" />
+                        <Label FontFamily="OpenSansSemibold" FontSize="22" Text="{Binding TitleDisplay}" TextColor="{DynamicResource TextPrimary}" />
                         <HorizontalStackLayout Spacing="6">
                             <Image Source="icon_star.png" WidthRequest="14" HeightRequest="14" VerticalOptions="Center" />
-                            <Label FontSize="14" Text="{Binding RatingFormatted}" TextColor="{StaticResource TextPrimary}" VerticalOptions="Center"/>
-                            <Label FontSize="14" Text="·" TextColor="{StaticResource TextSecondary}" VerticalOptions="Center"/>
-                            <Label FontSize="14" Text="{Binding RestaurantDisplay}" TextColor="{StaticResource TextSecondary}" VerticalOptions="Center"/>
-                            <Label FontSize="14" Text="·" TextColor="{StaticResource TextSecondary}" VerticalOptions="Center"/>
-                            <Label FontSize="14" Text="{Binding DistanceFormatted}" TextColor="{StaticResource TextSecondary}" VerticalOptions="Center"/>
+                            <Label FontSize="14" Text="{Binding RatingFormatted}" TextColor="{DynamicResource TextPrimary}" VerticalOptions="Center"/>
+                            <Label FontSize="14" Text="·" TextColor="{DynamicResource TextSecondary}" VerticalOptions="Center"/>
+                            <Label FontSize="14" Text="{Binding RestaurantDisplay}" TextColor="{DynamicResource TextSecondary}" VerticalOptions="Center"/>
+                            <Label FontSize="14" Text="·" TextColor="{DynamicResource TextSecondary}" VerticalOptions="Center"/>
+                            <Label FontSize="14" Text="{Binding DistanceFormatted}" TextColor="{DynamicResource TextSecondary}" VerticalOptions="Center"/>
                         </HorizontalStackLayout>
                     </VerticalStackLayout>
 
                     <!-- Description -->
                     <Label FontFamily="OpenSansRegular" FontSize="14" LineHeight="1.5"
                            Text="{Binding DescriptionFormatted}"
-                           TextColor="{StaticResource TextSecondary}" />
+                           TextColor="{DynamicResource TextSecondary}" />
 
                     <!-- Price block -->
                     <VerticalStackLayout Spacing="6">
                         <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
-                            <Label FontSize="14" Text="{Binding OldPriceFormatted}" TextColor="{StaticResource TextSecondary}" TextDecorations="Strikethrough" VerticalOptions="End"/>
+                            <Label FontSize="14" Text="{Binding OldPriceFormatted}" TextColor="{DynamicResource TextSecondary}" TextDecorations="Strikethrough" VerticalOptions="End"/>
                             <Label FontFamily="OpenSansSemibold" FontSize="28" Text="{Binding NewPriceFormatted}" TextColor="{StaticResource Primary}" VerticalOptions="End"/>
                         </HorizontalStackLayout>
                         <Border
                             Padding="12,6"
-                            BackgroundColor="{StaticResource PrimaryLight}"
+                            BackgroundColor="{DynamicResource PrimaryLight}"
                             StrokeThickness="0"
                             StrokeShape="RoundRectangle 8"
                             HorizontalOptions="Start">
-                            <Label FontFamily="OpenSansSemibold" FontSize="13" Text="{Binding SavingsFormatted}" TextColor="{StaticResource TextAccent}"/>
+                            <Label FontFamily="OpenSansSemibold" FontSize="13" Text="{Binding SavingsFormatted}" TextColor="{DynamicResource TextAccent}"/>
                         </Border>
                     </VerticalStackLayout>
 
@@ -103,38 +103,38 @@
                         <!-- Pickup -->
                         <VerticalStackLayout HorizontalOptions="Center" Spacing="4">
                             <Image Source="icon_clock.png" WidthRequest="18" HeightRequest="18" HorizontalOptions="Center"/>
-                            <Label FontFamily="OpenSansSemibold" FontSize="11" Text="{Binding PickupShort}" TextColor="{StaticResource TextPrimary}" HorizontalTextAlignment="Center" LineBreakMode="WordWrap"/>
+                            <Label FontFamily="OpenSansSemibold" FontSize="11" Text="{Binding PickupShort}" TextColor="{DynamicResource TextPrimary}" HorizontalTextAlignment="Center" LineBreakMode="WordWrap"/>
                         </VerticalStackLayout>
                         <!-- Divider -->
-                        <BoxView Grid.Column="1" BackgroundColor="{StaticResource Border}" WidthRequest="1" HeightRequest="36" VerticalOptions="Center"/>
+                        <BoxView Grid.Column="1" BackgroundColor="{DynamicResource Border}" WidthRequest="1" HeightRequest="36" VerticalOptions="Center"/>
                         <!-- Units left -->
                         <VerticalStackLayout Grid.Column="2" HorizontalOptions="Center" Spacing="4">
                             <Image Source="icon_bag.png" WidthRequest="18" HeightRequest="18" HorizontalOptions="Center"/>
-                            <Label FontFamily="OpenSansSemibold" FontSize="11" Text="{Binding UnitsLeftShort}" TextColor="{StaticResource TextPrimary}" HorizontalTextAlignment="Center"/>
+                            <Label FontFamily="OpenSansSemibold" FontSize="11" Text="{Binding UnitsLeftShort}" TextColor="{DynamicResource TextPrimary}" HorizontalTextAlignment="Center"/>
                         </VerticalStackLayout>
                         <!-- Divider -->
-                        <BoxView Grid.Column="3" BackgroundColor="{StaticResource Border}" WidthRequest="1" HeightRequest="36" VerticalOptions="Center"/>
+                        <BoxView Grid.Column="3" BackgroundColor="{DynamicResource Border}" WidthRequest="1" HeightRequest="36" VerticalOptions="Center"/>
                         <!-- Category -->
                         <VerticalStackLayout Grid.Column="4" HorizontalOptions="Center" Spacing="4">
                             <Image Source="icon_heart.png" WidthRequest="18" HeightRequest="18" HorizontalOptions="Center"/>
-                            <Label FontFamily="OpenSansSemibold" FontSize="11" Text="{Binding CategoryLabel}" TextColor="{StaticResource TextPrimary}" HorizontalTextAlignment="Center"/>
+                            <Label FontFamily="OpenSansSemibold" FontSize="11" Text="{Binding CategoryLabel}" TextColor="{DynamicResource TextPrimary}" HorizontalTextAlignment="Center"/>
                         </VerticalStackLayout>
                     </Grid>
 
                     <!-- Sobre o estabelecimento -->
                     <Border
                         Padding="16"
-                        BackgroundColor="{StaticResource Surface}"
-                        Stroke="{StaticResource Border}"
+                        BackgroundColor="{DynamicResource Surface}"
+                        Stroke="{DynamicResource Border}"
                         StrokeThickness="1"
                         StrokeShape="RoundRectangle 16">
                         <Grid ColumnDefinitions="*,Auto">
                             <VerticalStackLayout Spacing="6">
-                                <Label FontFamily="OpenSansSemibold" FontSize="13" Text="Sobre o estabelecimento" TextColor="{StaticResource TextSecondary}"/>
-                                <Label FontFamily="OpenSansSemibold" FontSize="16" Text="{Binding RestaurantDisplay}" TextColor="{StaticResource TextPrimary}"/>
+                                <Label FontFamily="OpenSansSemibold" FontSize="13" Text="Sobre o estabelecimento" TextColor="{DynamicResource TextSecondary}"/>
+                                <Label FontFamily="OpenSansSemibold" FontSize="16" Text="{Binding RestaurantDisplay}" TextColor="{DynamicResource TextPrimary}"/>
                                 <HorizontalStackLayout Spacing="6">
                                     <Image Source="icon_location.png" WidthRequest="14" HeightRequest="14" VerticalOptions="Center"/>
-                                    <Label FontSize="13" Text="{Binding RestaurantAddress}" TextColor="{StaticResource TextSecondary}" VerticalOptions="Center" LineBreakMode="TailTruncation"/>
+                                    <Label FontSize="13" Text="{Binding RestaurantAddress}" TextColor="{DynamicResource TextSecondary}" VerticalOptions="Center" LineBreakMode="TailTruncation"/>
                                 </HorizontalStackLayout>
                             </VerticalStackLayout>
                             <Label Grid.Column="1" FontFamily="OpenSansSemibold" FontSize="13" Text="Ver perfil" TextColor="{StaticResource Primary}" VerticalOptions="Center"/>
@@ -145,7 +145,7 @@
         </ScrollView>
 
         <!-- CTA fixo -->
-        <Grid Grid.Row="1" Padding="16,12,16,20" BackgroundColor="{StaticResource Background}">
+        <Grid Grid.Row="1" Padding="16,12,16,20" BackgroundColor="{DynamicResource Background}">
             <Button
                 Style="{x:Null}"
                 CornerRadius="28"

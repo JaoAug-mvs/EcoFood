@@ -7,7 +7,8 @@
     xmlns:vms="clr-namespace:EcoFood.ViewModels"
     x:DataType="vms:ExploreViewModel"
     Padding="0"
-    BackgroundColor="{StaticResource Background}"
+    BackgroundColor="{DynamicResource Background}"
+    Shell.NavBarIsVisible="False"
     Title="Explorar">
 
     <CollectionView ItemsSource="{Binding Items}" SelectionMode="None" VerticalScrollBarVisibility="Never">
@@ -17,13 +18,13 @@
 
         <CollectionView.Header>
             <VerticalStackLayout Padding="18,18,18,12" Spacing="16">
-                <Label FontFamily="OpenSansSemibold" FontSize="26" Text="Explorar" TextColor="{StaticResource TextPrimary}" />
+                <Label FontFamily="OpenSansSemibold" FontSize="26" Text="Explorar" TextColor="{DynamicResource TextPrimary}" />
 
                 <!-- Search + filter -->
                 <Border
-                    Stroke="{StaticResource Border}"
+                    Stroke="{DynamicResource Border}"
                     StrokeThickness="1"
-                    BackgroundColor="{StaticResource Surface}"
+                    BackgroundColor="{DynamicResource Surface}"
                     StrokeShape="RoundRectangle 28"
                     HeightRequest="52">
                     <Grid ColumnDefinitions="Auto,*,Auto" Padding="16,0" VerticalOptions="Center">
@@ -31,17 +32,17 @@
                         <Entry
                             Grid.Column="1"
                             Placeholder="Buscar estabelecimentos ou pratos..."
-                            PlaceholderColor="{StaticResource TextSecondary}"
+                            PlaceholderColor="{DynamicResource TextSecondary}"
                             Text="{Binding SearchQuery}"
                             VerticalOptions="Center"
-                            TextColor="{StaticResource TextPrimary}"
+                            TextColor="{DynamicResource TextPrimary}"
                             FontSize="14"
                             Margin="10,0,0,0"
                             HeightRequest="44" />
                         <Border
                             Grid.Column="2"
                             WidthRequest="34" HeightRequest="34"
-                            BackgroundColor="{StaticResource PrimaryLight}"
+                            BackgroundColor="{DynamicResource PrimaryLight}"
                             StrokeThickness="0"
                             StrokeShape="RoundRectangle 10">
                             <Label Text="⚙" TextColor="{StaticResource Primary}" FontSize="16" HorizontalOptions="Center" VerticalOptions="Center"/>
@@ -49,31 +50,56 @@
                     </Grid>
                 </Border>
 
-                <!-- Categorias com seleção visual -->
-                <CollectionView ItemsSource="{Binding Categories}" HeightRequest="44" SelectionMode="None">
+                <!-- Categorias com ícone + label (sem card externo) -->
+                <CollectionView ItemsSource="{Binding Categories}" HeightRequest="80" SelectionMode="None">
                     <CollectionView.ItemsLayout>
-                        <LinearItemsLayout ItemSpacing="10" Orientation="Horizontal" />
+                        <LinearItemsLayout ItemSpacing="4" Orientation="Horizontal" />
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="m:CategoryChip">
-                            <Border Padding="16,10" Background="{StaticResource Surface}" Stroke="{StaticResource Border}" StrokeThickness="1" StrokeShape="RoundRectangle 22">
-                                <Border.GestureRecognizers>
+                            <VerticalStackLayout
+                                WidthRequest="68"
+                                Spacing="6"
+                                HorizontalOptions="Center"
+                                Padding="4,4">
+                                <VerticalStackLayout.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.SelectCategoryCommand}" CommandParameter="{Binding .}" />
-                                </Border.GestureRecognizers>
-                                <Border.Triggers>
-                                    <DataTrigger TargetType="Border" Binding="{Binding IsSelected}" Value="True">
-                                        <Setter Property="Background" Value="{StaticResource Primary}" />
-                                        <Setter Property="Stroke" Value="{StaticResource Primary}" />
-                                    </DataTrigger>
-                                </Border.Triggers>
-                                <Label FontFamily="OpenSansSemibold" FontSize="13" Text="{Binding Title}" TextColor="{StaticResource TextPrimary}" VerticalOptions="Center">
+                                </VerticalStackLayout.GestureRecognizers>
+                                <!-- Container do ícone -->
+                                <Border
+                                    WidthRequest="44" HeightRequest="44"
+                                    HorizontalOptions="Center"
+                                    BackgroundColor="{DynamicResource PrimaryLight}"
+                                    StrokeThickness="0"
+                                    StrokeShape="RoundRectangle 14">
+                                    <Border.Triggers>
+                                        <DataTrigger TargetType="Border" Binding="{Binding IsSelected}" Value="True">
+                                            <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                                        </DataTrigger>
+                                    </Border.Triggers>
+                                    <Image
+                                        Source="{Binding Icon}"
+                                        WidthRequest="24"
+                                        HeightRequest="24"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        Aspect="AspectFit"/>
+                                </Border>
+                                <!-- Label da categoria -->
+                                <Label
+                                    FontFamily="OpenSansSemibold"
+                                    FontSize="11"
+                                    Text="{Binding Title}"
+                                    TextColor="{DynamicResource TextSecondary}"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center">
                                     <Label.Triggers>
                                         <DataTrigger TargetType="Label" Binding="{Binding IsSelected}" Value="True">
-                                            <Setter Property="TextColor" Value="White" />
+                                            <Setter Property="TextColor" Value="{StaticResource Primary}" />
                                         </DataTrigger>
                                     </Label.Triggers>
                                 </Label>
-                            </Border>
+                            </VerticalStackLayout>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
@@ -86,8 +112,8 @@
                 <Border
                     Margin="18,0"
                     Padding="12"
-                    Background="{StaticResource Surface}"
-                    Stroke="{StaticResource Border}"
+                    Background="{DynamicResource Surface}"
+                    Stroke="{DynamicResource Border}"
                     StrokeThickness="1"
                     StrokeShape="RoundRectangle 18">
                     <Border.Shadow>
@@ -109,7 +135,7 @@
                                 HorizontalOptions="Start"
                                 VerticalOptions="Start"
                                 Padding="6,4"
-                                Background="#E53935"
+                                Background="{StaticResource ErrorBadge}"
                                 StrokeThickness="0"
                                 StrokeShape="RoundRectangle 6">
                                 <Label FontFamily="OpenSansSemibold" FontSize="11" Text="{Binding BadgeDiscount}" TextColor="White" />
@@ -118,22 +144,22 @@
 
                         <!-- Product info -->
                         <VerticalStackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center">
-                            <Label FontFamily="OpenSansSemibold" FontSize="15" Text="{Binding Product.Name}" TextColor="{StaticResource TextPrimary}" LineBreakMode="TailTruncation"/>
-                            <Label FontSize="12" Text="{Binding Product.RestaurantName}" TextColor="{StaticResource TextSecondary}" />
+                            <Label FontFamily="OpenSansSemibold" FontSize="15" Text="{Binding Product.Name}" TextColor="{DynamicResource TextPrimary}" LineBreakMode="TailTruncation"/>
+                            <Label FontSize="12" Text="{Binding Product.RestaurantName}" TextColor="{DynamicResource TextSecondary}" />
                             <HorizontalStackLayout Spacing="5">
                                 <Image Source="icon_star.png" WidthRequest="12" HeightRequest="12" VerticalOptions="Center"/>
-                                <Label FontSize="12" Text="{Binding RatingFormatted}" TextColor="{StaticResource TextPrimary}" VerticalOptions="Center"/>
-                                <Label FontSize="12" Text="·" TextColor="{StaticResource TextSecondary}" VerticalOptions="Center"/>
-                                <Label FontSize="12" Text="{Binding DistanceFormatted}" TextColor="{StaticResource TextSecondary}" VerticalOptions="Center"/>
+                                <Label FontSize="12" Text="{Binding RatingFormatted}" TextColor="{DynamicResource TextPrimary}" VerticalOptions="Center"/>
+                                <Label FontSize="12" Text="·" TextColor="{DynamicResource TextSecondary}" VerticalOptions="Center"/>
+                                <Label FontSize="12" Text="{Binding DistanceFormatted}" TextColor="{DynamicResource TextSecondary}" VerticalOptions="Center"/>
                             </HorizontalStackLayout>
                             <Grid ColumnDefinitions="*,Auto" Margin="0,2,0,0">
                                 <VerticalStackLayout Spacing="1">
-                                    <Label FontSize="11" Text="{Binding OldPriceFormatted}" TextColor="{StaticResource TextSecondary}" TextDecorations="Strikethrough"/>
+                                    <Label FontSize="11" Text="{Binding OldPriceFormatted}" TextColor="{DynamicResource TextSecondary}" TextDecorations="Strikethrough"/>
                                     <Label FontFamily="OpenSansSemibold" FontSize="17" Text="{Binding NewPriceFormatted}" TextColor="{StaticResource Primary}" />
                                 </VerticalStackLayout>
                                 <VerticalStackLayout Grid.Column="1" HorizontalOptions="End" VerticalOptions="End" Spacing="2">
                                     <Label FontFamily="OpenSansSemibold" FontSize="11" Text="{Binding StatusLeft}" TextColor="{StaticResource Primary}" HorizontalTextAlignment="End"/>
-                                    <Label FontSize="10" Text="{Binding Product.PickupWindow}" TextColor="{StaticResource TextSecondary}" HorizontalTextAlignment="End" LineBreakMode="TailTruncation" MaxLines="1" WidthRequest="90"/>
+                                    <Label FontSize="10" Text="{Binding Product.PickupWindow}" TextColor="{DynamicResource TextSecondary}" HorizontalTextAlignment="End" LineBreakMode="TailTruncation" MaxLines="1" WidthRequest="90"/>
                                 </VerticalStackLayout>
                             </Grid>
                         </VerticalStackLayout>

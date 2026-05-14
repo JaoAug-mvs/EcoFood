@@ -10,16 +10,30 @@ public partial class SplashPage : ContentPage
     {
         _services = services;
         InitializeComponent();
+
+        // Windows MAUI não renderiza corretamente filhos com VerticalOptions="End"
+        // na primeira passagem de layout quando ContentPage é a raiz da Window.
+        // Forçar IsVisible toggle em OnAppearing resolve o bug sem flash visível.
+        SizeChanged += OnFirstSizeChanged;
     }
 
-    void OnStartOnboardingClicked(object? sender, EventArgs e)
+    bool _layoutFixed;
+    void OnFirstSizeChanged(object? sender, EventArgs e)
     {
-        if (Preferences.Get("onboarding_done", false))
-            NavigateTo<AppShell>();
-        else
-            NavigateTo<OnboardingPage>();
+        if (_layoutFixed || Height <= 0) return;
+        _layoutFixed = true;
+        SizeChanged -= OnFirstSizeChanged;
+
+        // Força o MAUI a repassar o layout da seção inferior
+        BottomSection.IsVisible = false;
+        Dispatcher.Dispatch(() => BottomSection.IsVisible = true);
     }
 
+    // "Começar" → sempre mostra os 3 slides do onboarding
+    void OnStartOnboardingClicked(object? sender, EventArgs e)
+        => NavigateTo<OnboardingPage>();
+
+    // "Entrar" → pula onboarding e vai direto pro app
     void OnLoginClicked(object? sender, EventArgs e)
         => NavigateTo<AppShell>();
 

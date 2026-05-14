@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#2D6A2D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Bread loaf body -->
+  <path d="M5 12C5 8.5 7.5 6 12 6C16.5 6 19 8.5 19 12C19 13.5 18 14.5 17 15V20H7V15C6 14.5 5 13.5 5 12Z"/>
+  <!-- Score lines (cuts on top of bread) -->
+  <path d="M9 8.5C9 7.5 10 7 12 7C14 7 15 7.5 15 8.5"/>
+  <!-- Slice lines inside loaf body -->
+  <line x1="10" y1="15" x2="10" y2="20"/>
+  <line x1="14" y1="15" x2="14" y2="20"/>
+</svg>

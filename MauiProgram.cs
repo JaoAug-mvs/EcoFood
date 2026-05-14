@@ -60,6 +60,7 @@ public static class MauiProgram
 		services.AddTransient<ConfirmationViewModel>();
 		services.AddTransient<SuccessViewModel>();
 		services.AddTransient<OnboardingViewModel>();
+		services.AddTransient<OrderDetailViewModel>();
 
 		services.AddTransient<SplashPage>();
 		services.AddTransient<OnboardingPage>();
@@ -73,5 +74,6 @@ public static class MauiProgram
 		services.AddTransient<ConfirmationPage>();
 		services.AddTransient<SuccessPage>();
 		services.AddTransient<SettingsPage>();
+		services.AddTransient<OrderDetailPage>();
 	}
 }

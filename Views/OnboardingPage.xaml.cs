@@ -7,7 +7,6 @@ public partial class OnboardingPage : ContentPage
 {
     readonly IServiceProvider _services;
     readonly OnboardingViewModel _vm;
-    CancellationTokenSource? _resetCts;
 
     public OnboardingPage(OnboardingViewModel viewModel, IServiceProvider services)
     {
@@ -17,41 +16,23 @@ public partial class OnboardingPage : ContentPage
         _services = services;
     }
 
-    protected override async void OnAppearing()
+    protected override void OnAppearing()
     {
         base.OnAppearing();
-        _resetCts?.Cancel();
-        _resetCts = new CancellationTokenSource();
-        try
-        {
-            // Wait long enough for the Windows CarouselView init bug to fire
-            await Task.Delay(500, _resetCts.Token);
-            SlidesCarousel.Position = 0;
-            _vm.CurrentIndex = 0;
-        }
-        catch (OperationCanceledException) { }
+        _vm.CurrentIndex = 0; // sempre começa no slide 1, sem timing hack
     }
 
     void OnSkipClicked(object? sender, EventArgs e)
-    {
-        _resetCts?.Cancel();
-        NavigateToAppShell();
-    }
+        => NavigateToAppShell();
 
     void OnStartClicked(object? sender, EventArgs e)
     {
-        _resetCts?.Cancel(); // prevent reset from undoing user action
-        _vm.CurrentIndex = SlidesCarousel.Position; // sync with actual carousel state
-
         if (_vm.IsLastSlide)
         {
             NavigateToAppShell();
             return;
         }
-
-        var next = _vm.CurrentIndex + 1;
-        SlidesCarousel.Position = next;
-        _vm.CurrentIndex = next;
+        _vm.CurrentIndex++;
     }
 
     void NavigateToAppShell()

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#2D6A2D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Cherry + stem -->
+  <circle cx="12" cy="3.5" r="1.5"/>
+  <path d="M12 5L12 7.5"/>
+  <!-- Frosting dome -->
+  <path d="M7.5 10.5C7.5 7 16.5 7 16.5 10.5H7.5Z"/>
+  <!-- Inner frosting detail -->
+  <path d="M9.5 10.5C9.5 9 14.5 9 14.5 10.5"/>
+  <!-- Cupcake wrapper body -->
+  <path d="M7.5 10.5H16.5L15.5 20H8.5L7.5 10.5Z"/>
+  <!-- Wrapper vertical creases -->
+  <line x1="10.5" y1="12.5" x2="10" y2="20"/>
+  <line x1="13.5" y1="12.5" x2="14" y2="20"/>
+</svg>

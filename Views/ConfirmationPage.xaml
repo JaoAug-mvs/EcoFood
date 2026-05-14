@@ -6,7 +6,7 @@
     xmlns:vm="clr-namespace:EcoFood.ViewModels"
     x:DataType="vm:ConfirmationViewModel"
     Padding="16,16,16,0"
-    BackgroundColor="{StaticResource Background}"
+    BackgroundColor="{DynamicResource Background}"
     Title="Confirmar">
 
     <Grid RowDefinitions="*,Auto" RowSpacing="0">
@@ -42,72 +42,72 @@
                         <Label Text="Confirmação" FontSize="11" TextColor="{StaticResource Primary}" FontFamily="OpenSansSemibold" HorizontalTextAlignment="Center"/>
                     </VerticalStackLayout>
                     <!-- Line -->
-                    <BoxView Grid.Column="3" HeightRequest="2" BackgroundColor="{StaticResource Border}" VerticalOptions="Start" Margin="4,17,4,0" WidthRequest="60"/>
+                    <BoxView Grid.Column="3" HeightRequest="2" BackgroundColor="{DynamicResource Border}" VerticalOptions="Start" Margin="4,17,4,0" WidthRequest="60"/>
                     <!-- Step 3 -->
                     <VerticalStackLayout Grid.Column="4" HorizontalOptions="Center" Spacing="6">
                         <Border
                             WidthRequest="36" HeightRequest="36"
-                            Background="{StaticResource Surface}"
-                            Stroke="{StaticResource Border}"
+                            Background="{DynamicResource Surface}"
+                            Stroke="{DynamicResource Border}"
                             StrokeThickness="1"
                             StrokeShape="RoundRectangle 18"
                             HorizontalOptions="Center">
-                            <Label Text="3" TextColor="{StaticResource TextSecondary}" FontFamily="OpenSansSemibold" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            <Label Text="3" TextColor="{DynamicResource TextSecondary}" FontFamily="OpenSansSemibold" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center"/>
                         </Border>
-                        <Label Text="Pronto" FontSize="11" TextColor="{StaticResource TextSecondary}" HorizontalTextAlignment="Center"/>
+                        <Label Text="Pronto" FontSize="11" TextColor="{DynamicResource TextSecondary}" HorizontalTextAlignment="Center"/>
                     </VerticalStackLayout>
                 </Grid>
 
                 <!-- Resumo da reserva -->
-                <Border Stroke="{StaticResource Border}" StrokeThickness="1" Background="{StaticResource Surface}" StrokeShape="RoundRectangle 20" Padding="16">
+                <Border Stroke="{DynamicResource Border}" StrokeThickness="1" Background="{DynamicResource Surface}" StrokeShape="RoundRectangle 20" Padding="16">
                     <VerticalStackLayout Spacing="16">
-                        <Label FontFamily="OpenSansSemibold" FontSize="13" Text="Resumo da reserva" TextColor="{StaticResource TextSecondary}"/>
+                        <Label FontFamily="OpenSansSemibold" FontSize="13" Text="Resumo da reserva" TextColor="{DynamicResource TextSecondary}"/>
 
                         <!-- Product row -->
                         <Grid ColumnDefinitions="64,*,Auto" ColumnSpacing="14">
-                            <Border WidthRequest="64" HeightRequest="64" StrokeShape="RoundRectangle 12" StrokeThickness="0" Background="{StaticResource SurfaceMuted}">
+                            <Border WidthRequest="64" HeightRequest="64" StrokeShape="RoundRectangle 12" StrokeThickness="0" Background="{DynamicResource SurfaceMuted}">
                                 <Image Aspect="AspectFill" Source="{Binding ProductImageUrl}" />
                             </Border>
                             <VerticalStackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center">
-                                <Label FontFamily="OpenSansSemibold" FontSize="15" Text="{Binding ProductName}" TextColor="{StaticResource TextPrimary}" LineBreakMode="TailTruncation"/>
-                                <Label FontSize="13" Text="{Binding RestaurantName}" TextColor="{StaticResource TextSecondary}" />
-                                <Label FontSize="12" Text="{Binding OrderQuantity, StringFormat='{0} item'}" TextColor="{StaticResource TextSecondary}" />
+                                <Label FontFamily="OpenSansSemibold" FontSize="15" Text="{Binding ProductName}" TextColor="{DynamicResource TextPrimary}" LineBreakMode="TailTruncation"/>
+                                <Label FontSize="13" Text="{Binding RestaurantName}" TextColor="{DynamicResource TextSecondary}" />
+                                <Label FontSize="12" Text="{Binding OrderQuantity, StringFormat='{0} item'}" TextColor="{DynamicResource TextSecondary}" />
                             </VerticalStackLayout>
                             <Label Grid.Column="2" FontFamily="OpenSansSemibold" FontSize="15" Text="{Binding TotalFormatted}" TextColor="{StaticResource Primary}" VerticalOptions="Center"/>
                         </Grid>
 
-                        <BoxView HeightRequest="1" BackgroundColor="{StaticResource Border}"/>
+                        <BoxView HeightRequest="1" BackgroundColor="{DynamicResource Border}"/>
 
                         <!-- Details -->
                         <VerticalStackLayout Spacing="12">
                             <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
                                 <Image Source="icon_location.png" WidthRequest="16" HeightRequest="16" VerticalOptions="Center"/>
                                 <VerticalStackLayout Grid.Column="1" Spacing="2">
-                                    <Label FontSize="12" Text="Retirada" TextColor="{StaticResource TextSecondary}"/>
-                                    <Label FontFamily="OpenSansSemibold" FontSize="14" Text="{Binding AddressLine}" TextColor="{StaticResource TextPrimary}" LineBreakMode="TailTruncation"/>
-                                    <Label FontSize="12" Text="{Binding DistanceLine}" TextColor="{StaticResource TextSecondary}"/>
+                                    <Label FontSize="12" Text="Retirada" TextColor="{DynamicResource TextSecondary}"/>
+                                    <Label FontFamily="OpenSansSemibold" FontSize="14" Text="{Binding AddressLine}" TextColor="{DynamicResource TextPrimary}" LineBreakMode="TailTruncation"/>
+                                    <Label FontSize="12" Text="{Binding DistanceLine}" TextColor="{DynamicResource TextSecondary}"/>
                                 </VerticalStackLayout>
                             </Grid>
                             <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
                                 <Image Source="icon_clock.png" WidthRequest="16" HeightRequest="16" VerticalOptions="Center"/>
                                 <VerticalStackLayout Grid.Column="1" Spacing="2">
-                                    <Label FontSize="12" Text="Até quando posso retirar?" TextColor="{StaticResource TextSecondary}"/>
-                                    <Label FontFamily="OpenSansSemibold" FontSize="14" Text="{Binding PickupLine}" TextColor="{StaticResource TextPrimary}"/>
+                                    <Label FontSize="12" Text="Até quando posso retirar?" TextColor="{DynamicResource TextSecondary}"/>
+                                    <Label FontFamily="OpenSansSemibold" FontSize="14" Text="{Binding PickupLine}" TextColor="{DynamicResource TextPrimary}"/>
                                 </VerticalStackLayout>
                             </Grid>
                             <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
                                 <Image Source="icon_payment.png" WidthRequest="16" HeightRequest="16" VerticalOptions="Center"/>
                                 <VerticalStackLayout Grid.Column="1" Spacing="2">
-                                    <Label FontSize="12" Text="Pagamento" TextColor="{StaticResource TextSecondary}"/>
-                                    <Label FontFamily="OpenSansSemibold" FontSize="14" Text="Pagar ao retirar: Dinheiro, Pix ou cartão" TextColor="{StaticResource TextPrimary}"/>
+                                    <Label FontSize="12" Text="Pagamento" TextColor="{DynamicResource TextSecondary}"/>
+                                    <Label FontFamily="OpenSansSemibold" FontSize="14" Text="Pagar ao retirar: Dinheiro, Pix ou cartão" TextColor="{DynamicResource TextPrimary}"/>
                                 </VerticalStackLayout>
                             </Grid>
                         </VerticalStackLayout>
 
-                        <BoxView HeightRequest="1" BackgroundColor="{StaticResource Border}"/>
+                        <BoxView HeightRequest="1" BackgroundColor="{DynamicResource Border}"/>
 
                         <Grid ColumnDefinitions="*,Auto">
-                            <Label FontFamily="OpenSansSemibold" FontSize="16" Text="Total" TextColor="{StaticResource TextPrimary}"/>
+                            <Label FontFamily="OpenSansSemibold" FontSize="16" Text="Total" TextColor="{DynamicResource TextPrimary}"/>
                             <Label Grid.Column="1" FontFamily="OpenSansSemibold" FontSize="20" Text="{Binding TotalFormatted}" TextColor="{StaticResource Primary}"/>
                         </Grid>
                     </VerticalStackLayout>
@@ -116,7 +116,7 @@
         </ScrollView>
 
         <!-- CTAs fixos -->
-        <VerticalStackLayout Grid.Row="1" Padding="0,12,0,28" Spacing="10" BackgroundColor="{StaticResource Background}">
+        <VerticalStackLayout Grid.Row="1" Padding="0,12,0,28" Spacing="10" BackgroundColor="{DynamicResource Background}">
             <Button
                 CornerRadius="28"
                 HeightRequest="56"
@@ -128,13 +128,13 @@
                 Command="{Binding ConfirmReservationCommand}" />
             <Button
                 BackgroundColor="Transparent"
-                BorderColor="{StaticResource Border}"
+                BorderColor="{DynamicResource Border}"
                 BorderWidth="1"
                 CornerRadius="28"
                 HeightRequest="48"
                 HorizontalOptions="Fill"
                 Text="Voltar e ajustar"
-                TextColor="{StaticResource TextSecondary}"
+                TextColor="{DynamicResource TextSecondary}"
                 FontSize="15"
                 FontFamily="OpenSansSemibold"
                 Command="{Binding EditReservationCommand}" />

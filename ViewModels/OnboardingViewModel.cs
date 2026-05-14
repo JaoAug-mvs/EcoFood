@@ -30,8 +30,15 @@ public sealed partial class OnboardingViewModel : ObservableObject
 
     public string PrimaryButtonText => IsLastSlide ? "Começar" : "Próximo";
 
+    public bool IsSlide0 => CurrentIndex == 0;
+    public bool IsSlide1 => CurrentIndex == 1;
+    public bool IsSlide2 => CurrentIndex == 2;
+
     partial void OnCurrentIndexChanged(int value)
     {
+        OnPropertyChanged(nameof(IsSlide0));
+        OnPropertyChanged(nameof(IsSlide1));
+        OnPropertyChanged(nameof(IsSlide2));
         OnPropertyChanged(nameof(IsLastSlide));
         OnPropertyChanged(nameof(PrimaryButtonText));
     }

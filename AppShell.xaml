@@ -6,10 +6,10 @@
     xmlns:views="clr-namespace:EcoFood.Views"
     FlyoutBehavior="Disabled"
     Shell.TabBarForegroundColor="{StaticResource Primary}"
-    Shell.TabBarUnselectedColor="{StaticResource TextSecondary}"
-    Shell.TabBarBackgroundColor="{StaticResource Surface}"
-    Shell.TabBarTitleColor="{StaticResource TextPrimary}"
-    Shell.BackgroundColor="{StaticResource Background}"
+    Shell.TabBarUnselectedColor="{AppThemeBinding Light=#6B7280, Dark=#9CA3AF}"
+    Shell.TabBarBackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#132218}"
+    Shell.TabBarTitleColor="{AppThemeBinding Light=#1F2937, Dark=#F3F4F6}"
+    Shell.BackgroundColor="{AppThemeBinding Light=#F9FBF8, Dark=#0B1512}"
     Title="EcoFood">
 
     <!--

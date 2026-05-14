@@ -12,6 +12,9 @@ public sealed class Order
 	public DateTime OrderedAtUtc { get; init; }
 	public decimal Total { get; init; }
 
+	public string Address { get; init; } = "";
+	public int Quantity { get; init; } = 1;
+
 	/// <summary>True quando ainda espera retirada; caso contrário faz parte do histórico.</summary>
 	public bool IsActive { get; init; }
 

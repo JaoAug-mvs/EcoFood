@@ -19,6 +19,7 @@ public sealed partial class ProfileViewModel : ObservableObject
 		RefreshFavoriteTotals();
 		_favorites.FavoritesChanged += (_, _) => RefreshFavoriteTotals();
 		ReloadImpact();
+		isDarkTheme = ThemeService.IsDark;
 	}
 
 	public string FullName => _mock.CurrentUser.FullName;
@@ -29,6 +30,12 @@ public sealed partial class ProfileViewModel : ObservableObject
 
 	[ObservableProperty]
 	int favoritesCount;
+
+	[ObservableProperty]
+	bool isDarkTheme;
+
+	partial void OnIsDarkThemeChanged(bool value)
+		=> ThemeService.Apply(value);
 
 	public void RefreshFavoriteTotals()
 	{

@@ -19,7 +19,7 @@ public partial class HomeViewModel : ObservableObject
 		_mock = mock;
 		_favs = favs;
 		foreach (var c in mock.Categories)
-			Categories.Add(new CategoryChip { Key = c.Key, Title = c.Title });
+			Categories.Add(new CategoryChip { Key = c.Key, Title = c.Title, Icon = c.Icon });
 
 		UpdateSelectedCategory();
 		ReloadImpactFromUser();
@@ -37,11 +37,7 @@ public partial class HomeViewModel : ObservableObject
 
 	public AppUser CurrentUser => _mock.CurrentUser;
 
-	public string LocationLabel => "São Paulo, SP";
-
-	public string Greeting => $"Olá, {CurrentUser.FirstName} 👋";
-
-	public string HomeSubtitle => "Que bom ter você por aqui!";
+	public string Greeting => $"Olá, {CurrentUser.FirstName}! 👋";
 
 	public ImpactStats Impact => CurrentUser.Impact;
 
@@ -54,7 +50,7 @@ public partial class HomeViewModel : ObservableObject
 	[ObservableProperty]
 	string impactCo2Formatted = "0,0 kg";
 
-	public string FriendlySubtitle => "Que bom ter você aqui!";
+	public string FriendlySubtitle => "Que bom te ver por aqui!";
 
 	[ObservableProperty]
 	string searchQuery = string.Empty;
@@ -92,17 +88,7 @@ public partial class HomeViewModel : ObservableObject
 		IEnumerable<Product> query = _mock.AllProducts;
 
 		if (!string.Equals(SelectedCategoryKey, "Todos", StringComparison.OrdinalIgnoreCase))
-		{
-			query = SelectedCategoryKey switch
-			{
-				"Restaurantes" => query.Where(p => string.Equals(p.Category, "Restaurantes", StringComparison.OrdinalIgnoreCase)),
-				"Vegano" => query.Where(p => string.Equals(p.Category, "Vegano", StringComparison.OrdinalIgnoreCase)),
-				"Padaria" => query.Where(p => string.Equals(p.Category, "Padaria", StringComparison.OrdinalIgnoreCase)),
-				"Doces" => query.Where(p => string.Equals(p.Category, "Doces", StringComparison.OrdinalIgnoreCase)),
-				"Japones" => query.Where(p => string.Equals(p.Category, "Japones", StringComparison.OrdinalIgnoreCase)),
-				_ => query
-			};
-		}
+			query = query.Where(p => string.Equals(p.Category, SelectedCategoryKey, StringComparison.OrdinalIgnoreCase));
 
 		if (!string.IsNullOrWhiteSpace(q))
 		{
@@ -196,7 +182,7 @@ public sealed partial class ProductListItemVm : ObservableObject
 
 	public string StatusLeft => $"Restam {Product.UnitsLeft} unidades";
 
-	public string RatingFormatted => $"{Product.Rating:N1}".Replace(",", ",");
+	public string RatingFormatted => $"{Product.Rating:N1} ({Product.ReviewCount})".Replace(",", ",");
 
 	public string DistanceFormatted =>
 		ViewModelLocalization.Km(Product.DistanceKm);
@@ -204,6 +190,12 @@ public sealed partial class ProductListItemVm : ObservableObject
 	public string OldPriceFormatted => ViewModelLocalization.Money(Product.OriginalPrice);
 
 	public string NewPriceFormatted => ViewModelLocalization.Money(Product.DiscountedPrice);
+
+	public string OldPriceLabel => $"De {ViewModelLocalization.Money(Product.OriginalPrice)}";
+
+	public string NewPriceLabel => $"Por {ViewModelLocalization.Money(Product.DiscountedPrice)}";
+
+	public string PickupUntilFormatted => $"Retirar até {Product.PickupUntilHour}";
 
 	public static ProductListItemVm FromProduct(Product p)
 		=> new(p);

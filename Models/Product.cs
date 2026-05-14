@@ -26,4 +26,8 @@ public sealed class Product
 	public required string PickupWindow { get; init; }
 
 	public Restaurant? Restaurant { get; init; }
+
+	public int ReviewCount { get; init; }
+	public string EstablishmentType { get; init; } = "Restaurantes";
+	public string PickupUntilHour { get; init; } = "";
 }

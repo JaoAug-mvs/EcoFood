@@ -1,0 +1,23 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "EcoFood (Windows — exe)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build-ecofood-windows",
+      "program": "${workspaceFolder}/bin/Debug/net10.0-windows10.0.19041.0/win-x64/EcoFood.exe",
+      "cwd": "${workspaceFolder}/bin/Debug/net10.0-windows10.0.19041.0/win-x64",
+      "stopAtEntry": false,
+      "justMyCode": true,
+      "suppressJITOptimizations": true
+    },
+    {
+      "name": "EcoFood (anexar ao processo)",
+      "type": "coreclr",
+      "request": "attach",
+      "processId": "${command:pickProcess}",
+      "justMyCode": true
+    }
+  ]
+}

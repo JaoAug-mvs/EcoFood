@@ -5,11 +5,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:vm="clr-namespace:EcoFood.ViewModels"
     x:DataType="vm:OnboardingViewModel"
-    BackgroundColor="{StaticResource Background}"
+    BackgroundColor="{DynamicResource Background}"
     Shell.NavBarIsVisible="False"
     Padding="0">
 
-    <Grid RowDefinitions="Auto,*,Auto">
+    <Grid RowDefinitions="Auto,*,220">
 
         <!-- Top bar: logo + Pular -->
         <Grid
@@ -17,7 +17,7 @@
             Padding="20,20,20,0"
             ColumnDefinitions="Auto,*,Auto">
             <HorizontalStackLayout Grid.Column="0" Spacing="0" VerticalOptions="Center">
-                <Label Text="Eco" FontFamily="OpenSansSemibold" FontSize="22" TextColor="{StaticResource TextPrimary}"/>
+                <Label Text="Eco" FontFamily="OpenSansSemibold" FontSize="22" TextColor="{DynamicResource TextPrimary}"/>
                 <Label Text="Food" FontFamily="OpenSansSemibold" FontSize="22" TextColor="{StaticResource Primary}"/>
             </HorizontalStackLayout>
             <Button
@@ -26,62 +26,141 @@
                 FontFamily="OpenSansSemibold"
                 FontSize="14"
                 BackgroundColor="Transparent"
-                TextColor="{StaticResource TextSecondary}"
+                TextColor="{DynamicResource TextSecondary}"
                 Clicked="OnSkipClicked"
                 HorizontalOptions="End"
                 VerticalOptions="Center" />
         </Grid>
 
-        <!-- Carousel -->
-        <CarouselView
-            x:Name="SlidesCarousel"
-            Grid.Row="1"
-            ItemsSource="{Binding Slides}"
-            IndicatorView="OnboardingIndicator"
-            Margin="0,0,0,0">
-            <CarouselView.ItemTemplate>
-                <DataTemplate x:DataType="vm:OnboardingSlide">
-                    <VerticalStackLayout
-                        Spacing="24"
-                        Padding="28,32,28,0"
-                        HorizontalOptions="Fill"
-                        VerticalOptions="Center">
-                        <Image
-                            Source="{Binding ImageSource}"
-                            Aspect="AspectFit"
-                            HeightRequest="240"
-                            HorizontalOptions="Center" />
-                        <VerticalStackLayout Spacing="14">
-                            <Label
-                                FontFamily="OpenSansSemibold"
-                                FontSize="26"
-                                Text="{Binding Title}"
-                                TextColor="{StaticResource TextPrimary}"
-                                HorizontalTextAlignment="Center"
-                                LineBreakMode="WordWrap"/>
-                            <Label
-                                FontFamily="OpenSansRegular"
-                                FontSize="15"
-                                Text="{Binding Subtitle}"
-                                TextColor="{StaticResource TextSecondary}"
-                                HorizontalTextAlignment="Center"
-                                LineBreakMode="WordWrap"
-                                LineHeight="1.5"
-                                Margin="8,0"/>
-                        </VerticalStackLayout>
-                    </VerticalStackLayout>
-                </DataTemplate>
-            </CarouselView.ItemTemplate>
-        </CarouselView>
+        <!-- Slides (sem CarouselView — controle manual via IsVisible) -->
+        <Grid Grid.Row="1">
 
-        <!-- Bottom: dots + button -->
+            <!-- Slide 1 -->
+            <VerticalStackLayout
+                IsVisible="{Binding IsSlide0}"
+                Spacing="24"
+                Padding="28,32,28,0"
+                HorizontalOptions="Fill"
+                VerticalOptions="Center">
+                <Image
+                    Source="logo_verde_sem_fundo.png"
+                    Aspect="AspectFit"
+                    HeightRequest="240"
+                    HorizontalOptions="Center" />
+                <VerticalStackLayout Spacing="14">
+                    <Label
+                        FontFamily="OpenSansSemibold"
+                        FontSize="26"
+                        Text="EcoFood"
+                        TextColor="{DynamicResource TextPrimary}"
+                        HorizontalTextAlignment="Center"
+                        LineBreakMode="WordWrap"/>
+                    <Label
+                        FontFamily="OpenSansRegular"
+                        FontSize="15"
+                        Text="Alimentação saudável e sustentável para seu dia a dia, com menos desperdício e mais sabor."
+                        TextColor="{DynamicResource TextSecondary}"
+                        HorizontalTextAlignment="Center"
+                        LineBreakMode="WordWrap"
+                        LineHeight="1.5"
+                        Margin="8,0"/>
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+
+            <!-- Slide 2 -->
+            <VerticalStackLayout
+                IsVisible="{Binding IsSlide1}"
+                Spacing="24"
+                Padding="28,32,28,0"
+                HorizontalOptions="Fill"
+                VerticalOptions="Center">
+                <Image
+                    Source="logo_branca_sem_fundo.png"
+                    Aspect="AspectFit"
+                    HeightRequest="240"
+                    HorizontalOptions="Center" />
+                <VerticalStackLayout Spacing="14">
+                    <Label
+                        FontFamily="OpenSansSemibold"
+                        FontSize="26"
+                        Text="Menos desperdício"
+                        TextColor="{DynamicResource TextPrimary}"
+                        HorizontalTextAlignment="Center"
+                        LineBreakMode="WordWrap"/>
+                    <Label
+                        FontFamily="OpenSansRegular"
+                        FontSize="15"
+                        Text="Encontre pratos preparados com ingredientes selecionados e entregues com responsabilidade ambiental."
+                        TextColor="{DynamicResource TextSecondary}"
+                        HorizontalTextAlignment="Center"
+                        LineBreakMode="WordWrap"
+                        LineHeight="1.5"
+                        Margin="8,0"/>
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+
+            <!-- Slide 3 -->
+            <VerticalStackLayout
+                IsVisible="{Binding IsSlide2}"
+                Spacing="24"
+                Padding="28,32,28,0"
+                HorizontalOptions="Fill"
+                VerticalOptions="Center">
+                <Image
+                    Source="logo_verde_sem_fundo.png"
+                    Aspect="AspectFit"
+                    HeightRequest="240"
+                    HorizontalOptions="Center" />
+                <VerticalStackLayout Spacing="14">
+                    <Label
+                        FontFamily="OpenSansSemibold"
+                        FontSize="26"
+                        Text="Pedidos rápidos"
+                        TextColor="{DynamicResource TextPrimary}"
+                        HorizontalTextAlignment="Center"
+                        LineBreakMode="WordWrap"/>
+                    <Label
+                        FontFamily="OpenSansRegular"
+                        FontSize="15"
+                        Text="Reserve, acompanhe e retire com facilidade — uma experiência pensada para o seu tempo."
+                        TextColor="{DynamicResource TextSecondary}"
+                        HorizontalTextAlignment="Center"
+                        LineBreakMode="WordWrap"
+                        LineHeight="1.5"
+                        Margin="8,0"/>
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+
+        </Grid>
+
+        <!-- Bottom: bolinhas + botão -->
         <VerticalStackLayout Grid.Row="2" Spacing="16" Padding="24,16,24,40">
-            <IndicatorView
-                x:Name="OnboardingIndicator"
-                IndicatorColor="{StaticResource Border}"
-                SelectedIndicatorColor="{StaticResource Primary}"
-                IndicatorSize="10"
-                HorizontalOptions="Center" />
+
+            <!-- Bolinhas indicadoras manuais -->
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="8">
+                <Ellipse WidthRequest="10" HeightRequest="10" Fill="{DynamicResource Border}">
+                    <Ellipse.Triggers>
+                        <DataTrigger TargetType="Ellipse" Binding="{Binding IsSlide0}" Value="True">
+                            <Setter Property="Fill" Value="{StaticResource Primary}" />
+                        </DataTrigger>
+                    </Ellipse.Triggers>
+                </Ellipse>
+                <Ellipse WidthRequest="10" HeightRequest="10" Fill="{DynamicResource Border}">
+                    <Ellipse.Triggers>
+                        <DataTrigger TargetType="Ellipse" Binding="{Binding IsSlide1}" Value="True">
+                            <Setter Property="Fill" Value="{StaticResource Primary}" />
+                        </DataTrigger>
+                    </Ellipse.Triggers>
+                </Ellipse>
+                <Ellipse WidthRequest="10" HeightRequest="10" Fill="{DynamicResource Border}">
+                    <Ellipse.Triggers>
+                        <DataTrigger TargetType="Ellipse" Binding="{Binding IsSlide2}" Value="True">
+                            <Setter Property="Fill" Value="{StaticResource Primary}" />
+                        </DataTrigger>
+                    </Ellipse.Triggers>
+                </Ellipse>
+            </HorizontalStackLayout>
+
             <Button
                 Text="{Binding PrimaryButtonText}"
                 Clicked="OnStartClicked"
@@ -92,5 +171,6 @@
                 BackgroundColor="{StaticResource Primary}"
                 TextColor="White" />
         </VerticalStackLayout>
+
     </Grid>
 </ContentPage>

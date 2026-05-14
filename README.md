@@ -41,7 +41,7 @@ Em resumo, o EcoFood não é apenas um aplicativo de ofertas, mas uma plataforma
 
 ## Pré-requisitos
 
-- [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0)
+- ](h[.NET 10 SDKttps://dotnet.microsoft.com/download/dotnet/10.0)
 - [Visual Studio 2022 17.12+](https://visualstudio.microsoft.com/) com a carga de trabalho **.NET Multi-platform App UI**  
   _ou_ VS Code com a extensão C# Dev Kit + MAUI
 - Para Android: Android SDK instalado pelo Visual Studio (API 21+)

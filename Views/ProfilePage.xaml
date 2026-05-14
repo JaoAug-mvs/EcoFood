@@ -6,19 +6,20 @@
     xmlns:vm="clr-namespace:EcoFood.ViewModels"
     x:DataType="vm:ProfileViewModel"
     Padding="0"
-    BackgroundColor="{StaticResource Background}"
+    BackgroundColor="{DynamicResource Background}"
+    Shell.NavBarIsVisible="False"
     Title="Perfil">
 
     <Grid RowDefinitions="Auto,*">
         <!-- Header with gear icon -->
         <Grid Grid.Row="0" Padding="18,18,18,12" ColumnDefinitions="*,Auto">
-            <Label FontFamily="OpenSansSemibold" FontSize="26" Text="Perfil" TextColor="{StaticResource TextPrimary}" VerticalOptions="Center"/>
+            <Label FontFamily="OpenSansSemibold" FontSize="26" Text="Perfil" TextColor="{DynamicResource TextPrimary}" VerticalOptions="Center"/>
             <Border
                 Grid.Column="1"
                 WidthRequest="42" HeightRequest="42"
                 StrokeThickness="0"
                 StrokeShape="RoundRectangle 21"
-                BackgroundColor="{StaticResource Surface}">
+                BackgroundColor="{DynamicResource Surface}">
                 <ImageButton
                     Style="{x:Null}"
                     BackgroundColor="Transparent"
@@ -29,81 +30,95 @@
             </Border>
         </Grid>
 
-        <ScrollView Grid.Row="1" BackgroundColor="{StaticResource Background}">
+        <ScrollView Grid.Row="1" BackgroundColor="{DynamicResource Background}">
             <VerticalStackLayout Padding="18,0,18,32" Spacing="12">
 
+                <!-- Tema escuro -->
+                <Border Background="{DynamicResource Surface}" Stroke="{DynamicResource Border}" StrokeThickness="1" StrokeShape="RoundRectangle 16" HorizontalOptions="Fill">
+                    <Grid Padding="18,16" ColumnDefinitions="Auto,*,Auto" ColumnSpacing="14">
+                        <Image Source="icon_alert.png" WidthRequest="22" HeightRequest="22" Aspect="AspectFit" VerticalOptions="Center"/>
+                        <Label Grid.Column="1" FontFamily="OpenSansSemibold" FontSize="15" Text="Tema escuro" TextColor="{DynamicResource TextPrimary}" VerticalOptions="Center"/>
+                        <Switch
+                            Grid.Column="2"
+                            IsToggled="{Binding IsDarkTheme}"
+                            OnColor="{StaticResource Primary}"
+                            ThumbColor="White"
+                            VerticalOptions="Center" />
+                    </Grid>
+                </Border>
+
                 <!-- Menu items -->
-                <Border Background="{StaticResource Surface}" Stroke="{StaticResource Border}" StrokeThickness="1" StrokeShape="RoundRectangle 16" HorizontalOptions="Fill">
+                <Border Background="{DynamicResource Surface}" Stroke="{DynamicResource Border}" StrokeThickness="1" StrokeShape="RoundRectangle 16" HorizontalOptions="Fill">
                     <Border.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding OpenAddressesCommand}" />
                     </Border.GestureRecognizers>
                     <Grid Padding="18,16" ColumnDefinitions="Auto,*,Auto" ColumnSpacing="14">
                         <Image Source="icon_location.png" WidthRequest="22" HeightRequest="22" Aspect="AspectFit" VerticalOptions="Center"/>
-                        <Label Grid.Column="1" FontFamily="OpenSansSemibold" FontSize="15" Text="Endereços" TextColor="{StaticResource TextPrimary}" VerticalOptions="Center"/>
-                        <Label Grid.Column="2" FontFamily="OpenSansSemibold" FontSize="18" Text="›" TextColor="{StaticResource TextSecondary}" VerticalOptions="Center"/>
+                        <Label Grid.Column="1" FontFamily="OpenSansSemibold" FontSize="15" Text="Endereços" TextColor="{DynamicResource TextPrimary}" VerticalOptions="Center"/>
+                        <Label Grid.Column="2" FontFamily="OpenSansSemibold" FontSize="18" Text="›" TextColor="{DynamicResource TextSecondary}" VerticalOptions="Center"/>
                     </Grid>
                 </Border>
 
-                <Border Background="{StaticResource Surface}" Stroke="{StaticResource Border}" StrokeThickness="1" StrokeShape="RoundRectangle 16" HorizontalOptions="Fill">
+                <Border Background="{DynamicResource Surface}" Stroke="{DynamicResource Border}" StrokeThickness="1" StrokeShape="RoundRectangle 16" HorizontalOptions="Fill">
                     <Border.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding OpenPaymentMethodsCommand}" />
                     </Border.GestureRecognizers>
                     <Grid Padding="18,16" ColumnDefinitions="Auto,*,Auto" ColumnSpacing="14">
                         <Image Source="icon_payment.png" WidthRequest="22" HeightRequest="22" Aspect="AspectFit" VerticalOptions="Center"/>
-                        <Label Grid.Column="1" FontFamily="OpenSansSemibold" FontSize="15" Text="Formas de pagamento" TextColor="{StaticResource TextPrimary}" VerticalOptions="Center"/>
-                        <Label Grid.Column="2" FontFamily="OpenSansSemibold" FontSize="18" Text="›" TextColor="{StaticResource TextSecondary}" VerticalOptions="Center"/>
+                        <Label Grid.Column="1" FontFamily="OpenSansSemibold" FontSize="15" Text="Formas de pagamento" TextColor="{DynamicResource TextPrimary}" VerticalOptions="Center"/>
+                        <Label Grid.Column="2" FontFamily="OpenSansSemibold" FontSize="18" Text="›" TextColor="{DynamicResource TextSecondary}" VerticalOptions="Center"/>
                     </Grid>
                 </Border>
 
-                <Border Background="{StaticResource Surface}" Stroke="{StaticResource Border}" StrokeThickness="1" StrokeShape="RoundRectangle 16" HorizontalOptions="Fill">
+                <Border Background="{DynamicResource Surface}" Stroke="{DynamicResource Border}" StrokeThickness="1" StrokeShape="RoundRectangle 16" HorizontalOptions="Fill">
                     <Border.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding OpenFoodPreferencesCommand}" />
                     </Border.GestureRecognizers>
                     <Grid Padding="18,16" ColumnDefinitions="Auto,*,Auto" ColumnSpacing="14">
                         <Image Source="icon_heart.png" WidthRequest="22" HeightRequest="22" Aspect="AspectFit" VerticalOptions="Center"/>
-                        <Label Grid.Column="1" FontFamily="OpenSansSemibold" FontSize="15" Text="Preferências alimentares" TextColor="{StaticResource TextPrimary}" VerticalOptions="Center"/>
-                        <Label Grid.Column="2" FontFamily="OpenSansSemibold" FontSize="18" Text="›" TextColor="{StaticResource TextSecondary}" VerticalOptions="Center"/>
+                        <Label Grid.Column="1" FontFamily="OpenSansSemibold" FontSize="15" Text="Preferências alimentares" TextColor="{DynamicResource TextPrimary}" VerticalOptions="Center"/>
+                        <Label Grid.Column="2" FontFamily="OpenSansSemibold" FontSize="18" Text="›" TextColor="{DynamicResource TextSecondary}" VerticalOptions="Center"/>
                     </Grid>
                 </Border>
 
-                <Border Background="{StaticResource Surface}" Stroke="{StaticResource Border}" StrokeThickness="1" StrokeShape="RoundRectangle 16" HorizontalOptions="Fill">
+                <Border Background="{DynamicResource Surface}" Stroke="{DynamicResource Border}" StrokeThickness="1" StrokeShape="RoundRectangle 16" HorizontalOptions="Fill">
                     <Border.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding OpenNotificationsSettingsCommand}" />
                     </Border.GestureRecognizers>
                     <Grid Padding="18,16" ColumnDefinitions="Auto,*,Auto" ColumnSpacing="14">
                         <Image Source="icon_alert.png" WidthRequest="22" HeightRequest="22" Aspect="AspectFit" VerticalOptions="Center"/>
-                        <Label Grid.Column="1" FontFamily="OpenSansSemibold" FontSize="15" Text="Notificações" TextColor="{StaticResource TextPrimary}" VerticalOptions="Center"/>
-                        <Label Grid.Column="2" FontFamily="OpenSansSemibold" FontSize="18" Text="›" TextColor="{StaticResource TextSecondary}" VerticalOptions="Center"/>
+                        <Label Grid.Column="1" FontFamily="OpenSansSemibold" FontSize="15" Text="Notificações" TextColor="{DynamicResource TextPrimary}" VerticalOptions="Center"/>
+                        <Label Grid.Column="2" FontFamily="OpenSansSemibold" FontSize="18" Text="›" TextColor="{DynamicResource TextSecondary}" VerticalOptions="Center"/>
                     </Grid>
                 </Border>
 
-                <Border Background="{StaticResource Surface}" Stroke="{StaticResource Border}" StrokeThickness="1" StrokeShape="RoundRectangle 16" HorizontalOptions="Fill">
+                <Border Background="{DynamicResource Surface}" Stroke="{DynamicResource Border}" StrokeThickness="1" StrokeShape="RoundRectangle 16" HorizontalOptions="Fill">
                     <Border.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding OpenSupportCommand}" />
                     </Border.GestureRecognizers>
                     <Grid Padding="18,16" ColumnDefinitions="Auto,*,Auto" ColumnSpacing="14">
                         <Image Source="icon_search.png" WidthRequest="22" HeightRequest="22" Aspect="AspectFit" VerticalOptions="Center"/>
-                        <Label Grid.Column="1" FontFamily="OpenSansSemibold" FontSize="15" Text="Ajuda e suporte" TextColor="{StaticResource TextPrimary}" VerticalOptions="Center"/>
-                        <Label Grid.Column="2" FontFamily="OpenSansSemibold" FontSize="18" Text="›" TextColor="{StaticResource TextSecondary}" VerticalOptions="Center"/>
+                        <Label Grid.Column="1" FontFamily="OpenSansSemibold" FontSize="15" Text="Ajuda e suporte" TextColor="{DynamicResource TextPrimary}" VerticalOptions="Center"/>
+                        <Label Grid.Column="2" FontFamily="OpenSansSemibold" FontSize="18" Text="›" TextColor="{DynamicResource TextSecondary}" VerticalOptions="Center"/>
                     </Grid>
                 </Border>
 
-                <Border Background="{StaticResource Surface}" Stroke="{StaticResource Border}" StrokeThickness="1" StrokeShape="RoundRectangle 16" HorizontalOptions="Fill">
+                <Border Background="{DynamicResource Surface}" Stroke="{DynamicResource Border}" StrokeThickness="1" StrokeShape="RoundRectangle 16" HorizontalOptions="Fill">
                     <Border.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding OpenAboutCommand}" />
                     </Border.GestureRecognizers>
                     <Grid Padding="18,16" ColumnDefinitions="Auto,*,Auto" ColumnSpacing="14">
                         <Image Source="icon_home.png" WidthRequest="22" HeightRequest="22" Aspect="AspectFit" VerticalOptions="Center"/>
-                        <Label Grid.Column="1" FontFamily="OpenSansSemibold" FontSize="15" Text="Sobre o EcoFood" TextColor="{StaticResource TextPrimary}" VerticalOptions="Center"/>
-                        <Label Grid.Column="2" FontFamily="OpenSansSemibold" FontSize="18" Text="›" TextColor="{StaticResource TextSecondary}" VerticalOptions="Center"/>
+                        <Label Grid.Column="1" FontFamily="OpenSansSemibold" FontSize="15" Text="Sobre o EcoFood" TextColor="{DynamicResource TextPrimary}" VerticalOptions="Center"/>
+                        <Label Grid.Column="2" FontFamily="OpenSansSemibold" FontSize="18" Text="›" TextColor="{DynamicResource TextSecondary}" VerticalOptions="Center"/>
                     </Grid>
                 </Border>
 
                 <!-- Sair -->
                 <Border
                     Margin="0,8,0,0"
-                    Background="{StaticResource Surface}"
-                    Stroke="{StaticResource Border}"
+                    Background="{DynamicResource Surface}"
+                    Stroke="{DynamicResource Border}"
                     StrokeThickness="1"
                     StrokeShape="RoundRectangle 16">
                     <Border.GestureRecognizers>

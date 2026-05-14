@@ -57,6 +57,10 @@ public sealed partial class OrdersViewModel : ObservableObject
 	[RelayCommand]
 	void SwitchToHistoryOrders() => ShowingActiveOrders = false;
 
+	[RelayCommand]
+	static Task ViewOrderDetailAsync(Order order)
+		=> Shell.Current.GoToAsync($"{nameof(Views.OrderDetailPage)}?orderId={order.Id}");
+
 	void OrdersOnCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
 		=> SyncBuckets();
 

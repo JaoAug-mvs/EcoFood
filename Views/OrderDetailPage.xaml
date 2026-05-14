@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="EcoFood.Views.OrderDetailPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:EcoFood.ViewModels"
+    x:DataType="vm:OrderDetailViewModel"
+    Padding="0"
+    BackgroundColor="{DynamicResource Background}"
+    Title="Detalhe da reserva">
+
+    <Grid RowDefinitions="*,Auto" RowSpacing="0">
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout Spacing="0">
+
+                <!-- Hero image -->
+                <Grid HeightRequest="220">
+                    <Image
+                        Aspect="AspectFill"
+                        IsVisible="{Binding HasOrder}"
+                        Source="{Binding CurrentOrder.ProductImageUrl}" />
+                    <!-- Gradiente escuro no rodapé da imagem -->
+                    <BoxView VerticalOptions="End" HeightRequest="80" HorizontalOptions="Fill" Opacity="0.5">
+                        <BoxView.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                <GradientStop Color="Transparent" Offset="0"/>
+                                <GradientStop Color="#000000" Offset="1"/>
+                            </LinearGradientBrush>
+                        </BoxView.Background>
+                    </BoxView>
+                    <!-- Badge de status -->
+                    <Border
+                        Margin="16"
+                        HorizontalOptions="Start"
+                        VerticalOptions="End"
+                        Padding="12,6"
+                        BackgroundColor="{Binding StatusColor}"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 20">
+                        <Label
+                            FontFamily="OpenSansSemibold"
+                            FontSize="13"
+                            Text="{Binding StatusLabel}"
+                            TextColor="White" />
+                    </Border>
+                </Grid>
+
+                <VerticalStackLayout Padding="18,18,18,0" Spacing="16">
+
+                    <!-- Nome + Restaurante -->
+                    <VerticalStackLayout Spacing="4">
+                        <Label
+                            FontFamily="OpenSansSemibold"
+                            FontSize="22"
+                            Text="{Binding CurrentOrder.ProductName}"
+                            TextColor="{DynamicResource TextPrimary}"
+                            LineBreakMode="WordWrap"/>
+                        <HorizontalStackLayout Spacing="6">
+                            <Image Source="icon_location.png" WidthRequest="14" HeightRequest="14" VerticalOptions="Center"/>
+                            <Label
+                                FontSize="14"
+                                Text="{Binding CurrentOrder.RestaurantName}"
+                                TextColor="{DynamicResource TextSecondary}"
+                                VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+
+                    <!-- Código de reserva -->
+                    <Border
+                        Padding="16"
+                        BackgroundColor="{DynamicResource PrimaryLight}"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 16">
+                        <Grid ColumnDefinitions="*,Auto">
+                            <VerticalStackLayout Spacing="2">
+                                <Label FontSize="12" Text="Código de retirada" TextColor="{DynamicResource TextSecondary}"/>
+                                <Label
+                                    FontFamily="OpenSansSemibold"
+                                    FontSize="26"
+                                    Text="{Binding CurrentOrder.BookingCode}"
+                                    TextColor="{DynamicResource TextAccent}"
+                                    CharacterSpacing="2"/>
+                            </VerticalStackLayout>
+                            <Border
+                                Grid.Column="1"
+                                Padding="10,8"
+                                BackgroundColor="{StaticResource Primary}"
+                                StrokeThickness="0"
+                                StrokeShape="RoundRectangle 12"
+                                VerticalOptions="Center">
+                                <Label FontFamily="OpenSansSemibold" FontSize="12" Text="Mostrar" TextColor="White"/>
+                            </Border>
+                        </Grid>
+                    </Border>
+
+                    <!-- Card de informações -->
+                    <Border
+                        Padding="16"
+                        Background="{DynamicResource Surface}"
+                        Stroke="{DynamicResource Border}"
+                        StrokeThickness="1"
+                        StrokeShape="RoundRectangle 16">
+                        <VerticalStackLayout Spacing="14">
+
+                            <!-- Retirada -->
+                            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                                <Image Source="icon_clock.png" WidthRequest="18" HeightRequest="18" VerticalOptions="Center"/>
+                                <VerticalStackLayout Grid.Column="1" Spacing="2">
+                                    <Label FontSize="12" Text="Janela de retirada" TextColor="{DynamicResource TextSecondary}"/>
+                                    <Label FontFamily="OpenSansSemibold" FontSize="14" Text="{Binding CurrentOrder.PickupWindow}" TextColor="{DynamicResource TextPrimary}"/>
+                                </VerticalStackLayout>
+                            </Grid>
+
+                            <BoxView HeightRequest="1" BackgroundColor="{DynamicResource Border}"/>
+
+                            <!-- Endereço -->
+                            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                                <Image Source="icon_location.png" WidthRequest="18" HeightRequest="18" VerticalOptions="Center"/>
+                                <VerticalStackLayout Grid.Column="1" Spacing="2">
+                                    <Label FontSize="12" Text="Endereço" TextColor="{DynamicResource TextSecondary}"/>
+                                    <Label FontFamily="OpenSansSemibold" FontSize="14" Text="{Binding CurrentOrder.Address}" TextColor="{DynamicResource TextPrimary}" LineBreakMode="WordWrap"/>
+                                </VerticalStackLayout>
+                            </Grid>
+
+                            <BoxView HeightRequest="1" BackgroundColor="{DynamicResource Border}"/>
+
+                            <!-- Quantidade + Pagamento -->
+                            <Grid ColumnDefinitions="*,*" ColumnSpacing="0">
+                                <VerticalStackLayout Spacing="2">
+                                    <Label FontSize="12" Text="Quantidade" TextColor="{DynamicResource TextSecondary}"/>
+                                    <Label FontFamily="OpenSansSemibold" FontSize="14" Text="{Binding QuantityLabel}" TextColor="{DynamicResource TextPrimary}"/>
+                                </VerticalStackLayout>
+                                <VerticalStackLayout Grid.Column="1" Spacing="2">
+                                    <Label FontSize="12" Text="Pagamento" TextColor="{DynamicResource TextSecondary}"/>
+                                    <Label FontFamily="OpenSansSemibold" FontSize="14" Text="Pagar ao retirar" TextColor="{DynamicResource TextPrimary}"/>
+                                </VerticalStackLayout>
+                            </Grid>
+
+                            <BoxView HeightRequest="1" BackgroundColor="{DynamicResource Border}"/>
+
+                            <!-- Total -->
+                            <Grid ColumnDefinitions="*,Auto">
+                                <Label FontFamily="OpenSansSemibold" FontSize="16" Text="Total" TextColor="{DynamicResource TextPrimary}" VerticalOptions="Center"/>
+                                <Label
+                                    Grid.Column="1"
+                                    FontFamily="OpenSansSemibold"
+                                    FontSize="22"
+                                    Text="{Binding TotalFormatted}"
+                                    TextColor="{StaticResource Primary}"
+                                    VerticalOptions="Center"/>
+                            </Grid>
+                        </VerticalStackLayout>
+                    </Border>
+
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Botão cancelar (só para reservas ativas) -->
+        <Grid
+            Grid.Row="1"
+            Padding="18,12,18,32"
+            BackgroundColor="{DynamicResource Background}"
+            IsVisible="{Binding IsActive}">
+            <Button
+                Style="{x:Null}"
+                CornerRadius="28"
+                HeightRequest="56"
+                HorizontalOptions="Fill"
+                Text="Cancelar reserva"
+                BackgroundColor="Transparent"
+                BorderColor="#DC2626"
+                BorderWidth="1.5"
+                TextColor="#DC2626"
+                FontSize="17"
+                FontFamily="OpenSansSemibold"
+                Command="{Binding CancelOrderCommand}" />
+        </Grid>
+    </Grid>
+</ContentPage>

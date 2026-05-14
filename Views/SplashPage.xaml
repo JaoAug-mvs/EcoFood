@@ -4,33 +4,35 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Shell.NavBarIsVisible="False"
-    BackgroundColor="White">
+    BackgroundColor="{DynamicResource Background}">
 
-    <Grid RowDefinitions="*,Auto">
+    <Grid>
+        <!-- Conteúdo central -->
         <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="20" Padding="32,0">
             <Image Source="logo_verde_sem_fundo.png" WidthRequest="120" HeightRequest="120" Aspect="AspectFit" HorizontalOptions="Center"/>
             <HorizontalStackLayout Spacing="0" HorizontalOptions="Center">
-                <Label Text="Eco" FontSize="42" FontFamily="OpenSansSemibold" TextColor="#1F2937" />
-                <Label Text="Food" FontSize="42" FontFamily="OpenSansSemibold" TextColor="#2ECC71" />
+                <Label Text="Eco" FontSize="42" FontFamily="OpenSansSemibold" TextColor="{DynamicResource TextPrimary}" />
+                <Label Text="Food" FontSize="42" FontFamily="OpenSansSemibold" TextColor="{StaticResource Primary}" />
             </HorizontalStackLayout>
             <Label
                 Text="Menos desperdício,&#10;mais oportunidades."
                 FontSize="16"
-                TextColor="#6B7280"
+                TextColor="{DynamicResource TextSecondary}"
                 HorizontalOptions="Center"
                 HorizontalTextAlignment="Center"
                 LineHeight="1.5"/>
         </VerticalStackLayout>
 
-        <VerticalStackLayout Grid.Row="1" Padding="24,0,24,48" Spacing="12">
+        <!-- Botões ancorados no rodapé -->
+        <VerticalStackLayout x:Name="BottomSection" VerticalOptions="End" Padding="24,0,24,48" Spacing="12">
             <HorizontalStackLayout Spacing="8" HorizontalOptions="Center" Margin="0,0,0,12">
-                <BoxView Color="#2ECC71" WidthRequest="28" HeightRequest="8" CornerRadius="4"/>
-                <BoxView Color="#E5E7EB" WidthRequest="8" HeightRequest="8" CornerRadius="4"/>
-                <BoxView Color="#E5E7EB" WidthRequest="8" HeightRequest="8" CornerRadius="4"/>
+                <BoxView Color="{StaticResource Primary}" WidthRequest="28" HeightRequest="8" CornerRadius="4"/>
+                <BoxView Color="{DynamicResource Gray200}" WidthRequest="8" HeightRequest="8" CornerRadius="4"/>
+                <BoxView Color="{DynamicResource Gray200}" WidthRequest="8" HeightRequest="8" CornerRadius="4"/>
             </HorizontalStackLayout>
             <Button
                 Text="Começar"
-                BackgroundColor="#2ECC71"
+                BackgroundColor="{StaticResource Primary}"
                 TextColor="White"
                 CornerRadius="28"
                 HeightRequest="56"
@@ -40,7 +42,7 @@
             <Button
                 Text="Entrar"
                 BackgroundColor="Transparent"
-                TextColor="#6B7280"
+                TextColor="{DynamicResource TextSecondary}"
                 FontFamily="OpenSansSemibold"
                 FontSize="15"
                 HeightRequest="44"
