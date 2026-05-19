@@ -119,3 +119,10 @@ A navegação principal usa **Shell** com 5 tabs. O fluxo de reserva (Detalhe �
 - Todos os dados são **fictícios e em memória** — nenhuma chamada de rede é feita
 - O estado de favoritos e pedidos é mantido durante a sessão e resetado ao reiniciar o app
 - O app foi desenvolvido e testado principalmente no **Windows**; o Android está configurado e compila, mas pode precisar de ajustes visuais
+
+
+## TELAS 
+
+![alt text](<Telas - Branca.png>)
+
+![alt text](<Telas - preta.png>)
