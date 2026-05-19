@@ -121,8 +121,10 @@ A navegação principal usa **Shell** com 5 tabs. O fluxo de reserva (Detalhe �
 - O app foi desenvolvido e testado principalmente no **Windows**; o Android está configurado e compila, mas pode precisar de ajustes visuais
 
 
-## TELAS 
+## Telas
 
-![alt text](<Telas - Branca.png>)
+### Tema Claro
+![Telas tema claro](docs/Telas%20-%20Branca.png)
 
-![alt text](<Telas - preta.png>)
+### Tema Escuro
+![Telas tema escuro](docs/Telas%20-%20preta.png)
