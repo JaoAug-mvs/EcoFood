@@ -2,7 +2,7 @@
 - Christopher Nascimento Lopes de Azevedo - 326129757
 - João Augusto Miranda Viana de Sozuza - 32614169
 - etícia Petrina Machado Silva - 32611529
-- Luana Xavier Monteiro - 
+- Luana Xavier Monteiro - 32610012
 - Pedro Morais Hilbert - 326129790
 
 # EcoFood
