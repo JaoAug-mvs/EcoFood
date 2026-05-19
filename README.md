@@ -1,3 +1,10 @@
+# Participantes 
+- Christopher Nascimento Lopes de Azevedo - 326129757
+- João Augusto Miranda Viana de Sozuza - 32614169
+- etícia Petrina Machado Silva - 32611529
+- Luana Xavier Monteiro - 
+- Pedro Morais Hilbert - 326129790
+
 # EcoFood
 
 O EcoFood é um aplicativo que tem como objetivo reduzir o desperdício de alimentos, conectando estabelecimentos comerciais a consumidores de forma simples e eficiente.
