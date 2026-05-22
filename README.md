@@ -1,3 +1,10 @@
+# Participantes 
+- Christopher Nascimento Lopes de Azevedo - 326129757
+- João Augusto Miranda Viana de Sozuza - 32614169
+- etícia Petrina Machado Silva - 32611529
+- Luana Xavier Monteiro - 32610012
+- Pedro Morais Hilbert - 326129790
+
 # EcoFood
 
 O EcoFood é um aplicativo que tem como objetivo reduzir o desperdício de alimentos, conectando estabelecimentos comerciais a consumidores de forma simples e eficiente.
@@ -112,3 +119,12 @@ A navegação principal usa **Shell** com 5 tabs. O fluxo de reserva (Detalhe �
 - Todos os dados são **fictícios e em memória** — nenhuma chamada de rede é feita
 - O estado de favoritos e pedidos é mantido durante a sessão e resetado ao reiniciar o app
 - O app foi desenvolvido e testado principalmente no **Windows**; o Android está configurado e compila, mas pode precisar de ajustes visuais
+
+
+## Telas
+
+### Tema Claro
+![Telas tema claro](docs/Telas%20-%20Branca.png)
+
+### Tema Escuro
+![Telas tema escuro](docs/Telas%20-%20preta.png)
