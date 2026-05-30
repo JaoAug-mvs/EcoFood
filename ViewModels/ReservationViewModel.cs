@@ -6,23 +6,19 @@ using EcoFood.ViewModels.Base;
 
 namespace EcoFood.ViewModels;
 
-/// <summary>Recapitula valores e confirma reserva usando pedidos/session simuladas.</summary>
 public sealed partial class ReservationViewModel : ObservableObject
 {
 	readonly ReservationSession _session;
-	readonly IOrdersService _ordersService;
 
-	public ReservationViewModel(ReservationSession session, IOrdersService ordersService)
+	public ReservationViewModel(ReservationSession session)
 	{
 		_session = session;
-		_ordersService = ordersService;
 	}
 
 	public string LoadedProductId { get; private set; } = "";
 
 	Product? Product => _session.DraftProduct;
 
-	/// <summary>Imagem utilizada na miniatura do resumo.</summary>
 	public string ThumbnailUrl => Product?.ImageUrl ?? "";
 
 	public string SummaryTitle => Product?.Name ?? "";
@@ -72,7 +68,8 @@ public sealed partial class ReservationViewModel : ObservableObject
 			if (Quantity != 1)
 				Quantity = 1;
 			else
-				NotifyReservationUiChanged(); // garante atualização quando já estava “1”, mas estado sumiu.
+				// garante atualização quando já estava “1” mas o estado de sessão foi limpo
+			NotifyReservationUiChanged();
 
 			ContinueReservationCommand.NotifyCanExecuteChanged();
 			return;

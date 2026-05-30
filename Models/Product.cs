@@ -1,8 +1,5 @@
 namespace EcoFood.Models;
 
-/// <summary>
-/// Representa uma oferta de refeição com desconto, pronta para retirada no restaurante parceiro.
-/// </summary>
 public sealed class Product
 {
 	public required string Id { get; init; }
@@ -10,8 +7,6 @@ public sealed class Product
 	public required string RestaurantName { get; init; }
 	public required string RestaurantId { get; init; }
 	public required string Category { get; init; }
-
-	/// <summary>URL fictícia (Unsplash/Picsum); funciona bem para demonstrações sem backend.</summary>
 	public required string ImageUrl { get; init; }
 
 	public double Rating { get; init; }

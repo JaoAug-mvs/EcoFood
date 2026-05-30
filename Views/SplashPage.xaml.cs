@@ -1,4 +1,4 @@
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 
 namespace EcoFood.Views;
 
@@ -29,11 +29,9 @@ public partial class SplashPage : ContentPage
         Dispatcher.Dispatch(() => BottomSection.IsVisible = true);
     }
 
-    // "Começar" → sempre mostra os 3 slides do onboarding
     void OnStartOnboardingClicked(object? sender, EventArgs e)
         => NavigateTo<OnboardingPage>();
 
-    // "Entrar" → pula onboarding e vai direto pro app
     void OnLoginClicked(object? sender, EventArgs e)
         => NavigateTo<AppShell>();
 

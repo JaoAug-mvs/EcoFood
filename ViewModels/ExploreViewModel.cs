@@ -8,7 +8,6 @@ using Microsoft.Maui.ApplicationModel;
 
 namespace EcoFood.ViewModels;
 
-/// <summary>Exploração completa das ofertas com busca rápida (aba Explorar).</summary>
 public partial class ExploreViewModel : ObservableObject
 {
 	readonly IMockDataService _mock;

@@ -1,6 +1,5 @@
 namespace EcoFood.Services;
 
-/// <summary>Favoritos em memória persistidos apenas durante sessão.</summary>
 public interface IFavoritesService
 {
 	event EventHandler<FavoritesChangedEventArgs>? FavoritesChanged;

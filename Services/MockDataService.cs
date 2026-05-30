@@ -3,7 +3,6 @@ using EcoFood.Models;
 
 namespace EcoFood.Services;
 
-/// <summary>Implementação de dados fictícios com valores inspirados nos wireframes EcoFood.</summary>
 public sealed class MockDataService : IMockDataService
 {
 	public MockDataService()
@@ -31,14 +30,6 @@ public sealed class MockDataService : IMockDataService
 			new CategoryChip { Key = "Padaria",    Title = "Padaria",   Icon = "cat_padaria.png" },
 			new CategoryChip { Key = "Doces",      Title = "Doces",     Icon = "cat_doces.png" },
 		];
-		HomeCategories =
-		[
-			new CategoryChip { Key = "Todos",        Title = "Todos",        Icon = "🏠" },
-			new CategoryChip { Key = "Restaurantes", Title = "Restaurantes", Icon = "🍽️" },
-			new CategoryChip { Key = "Padarias",     Title = "Padarias",     Icon = "🥐" },
-			new CategoryChip { Key = "Mercados",     Title = "Mercados",     Icon = "🛒" },
-			new CategoryChip { Key = "Cafeterias",   Title = "Cafeterias",   Icon = "☕" },
-		];
 	}
 
 	readonly ReadOnlyCollection<Product> _catalog;
@@ -47,17 +38,7 @@ public sealed class MockDataService : IMockDataService
 
 	public IReadOnlyList<CategoryChip> Categories { get; }
 
-	public IReadOnlyList<CategoryChip> HomeCategories { get; }
-
 	public IReadOnlyList<Product> AllProducts => _catalog;
-
-	public Restaurant? FindRestaurant(string id)
-	{
-		foreach (var p in _catalog)
-			if (p.Restaurant?.Id == id)
-				return p.Restaurant;
-		return null;
-	}
 
 	public Product? FindProduct(string id)
 		=> _catalog.FirstOrDefault(p => p.Id == id);

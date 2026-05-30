@@ -7,7 +7,6 @@ using EcoFood.Services;
 
 namespace EcoFood.ViewModels;
 
-/// <summary>Histórico/ativos a partir dos pedidos fictícios de <see cref="IOrdersService"/>.</summary>
 public sealed partial class OrdersViewModel : ObservableObject
 {
 	readonly IOrdersService _ordersService;
@@ -27,7 +26,6 @@ public sealed partial class OrdersViewModel : ObservableObject
 
 	public bool HasHistory => HistoryOrders.Count > 0;
 
-	/// <summary>Controla segmentação “ativos vs histórico” na UI.</summary>
 	[ObservableProperty]
 	bool showingActiveOrders = true;
 

@@ -8,7 +8,6 @@ using Microsoft.Maui.ApplicationModel;
 
 namespace EcoFood.ViewModels;
 
-/// <summary>Home EcoFood — saudações, métricas, busca, chips e lista de produtos próximos.</summary>
 public partial class HomeViewModel : ObservableObject
 {
 	readonly IMockDataService _mock;
@@ -30,7 +29,6 @@ public partial class HomeViewModel : ObservableObject
 		};
 	}
 
-	/// <summary>Chaves adicionadas para badges “favoritar” rápido nos cards da Home.</summary>
 	public ObservableCollection<ProductListItemVm> VisibleProducts { get; } = new();
 
 	public ObservableCollection<CategoryChip> Categories { get; } = new();
@@ -129,7 +127,7 @@ public partial class HomeViewModel : ObservableObject
 	{
 		ImpactMealsFormatted = $"{Impact.SavedMeals}";
 		ImpactMoneyFormatted = ViewModelLocalization.Money(Impact.TotalSavingsMoney);
-		ImpactCo2Formatted = $"{Impact.SavedCo2Kg:N1} kg".Replace(",", ",");
+		ImpactCo2Formatted = $"{Impact.SavedCo2Kg:N1} kg";
 	}
 
 	[RelayCommand]
@@ -160,7 +158,6 @@ public partial class HomeViewModel : ObservableObject
 	}
 }
 
-/// <summary>Model leve só para dados binding no card horizontal/vertical sem poluir modelo de domínio.</summary>
 public sealed partial class ProductListItemVm : ObservableObject
 {
 	ProductListItemVm(Product product)
@@ -182,7 +179,7 @@ public sealed partial class ProductListItemVm : ObservableObject
 
 	public string StatusLeft => $"Restam {Product.UnitsLeft} unidades";
 
-	public string RatingFormatted => $"{Product.Rating:N1} ({Product.ReviewCount})".Replace(",", ",");
+	public string RatingFormatted => $"{Product.Rating:N1} ({Product.ReviewCount})";
 
 	public string DistanceFormatted =>
 		ViewModelLocalization.Km(Product.DistanceKm);

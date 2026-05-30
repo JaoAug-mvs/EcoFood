@@ -6,7 +6,6 @@ using EcoFood.ViewModels.Base;
 
 namespace EcoFood.ViewModels;
 
-/// <summary>Página detalhes com preços, texto e início da reserva.</summary>
 public sealed partial class ProductDetailViewModel : ObservableObject
 {
 	readonly IMockDataService _mock;
@@ -69,7 +68,7 @@ public sealed partial class ProductDetailViewModel : ObservableObject
 	public string RestaurantDisplay => Product?.RestaurantName ?? "";
 
 	public string RatingFormatted =>
-		Product is null ? "" : $"{Product.Rating:N1}".Replace(",", ",");
+		Product is null ? "" : $"{Product.Rating:N1}";
 
 	public string DistanceFormatted =>
 		Product is null ? "" : ViewModelLocalization.Km(Product.DistanceKm);
@@ -113,7 +112,6 @@ public sealed partial class ProductDetailViewModel : ObservableObject
 
 	public bool IsFavorite => Product is not null && _favorites.Contains(Product.Id);
 
-	/// <summary>Glyph simples para botão circular de favoritos (♥ / ♡).</summary>
 	public string FavoriteGlyph => IsFavorite ? "♥" : "♡";
 
 	public void Load(string? productId)
@@ -138,9 +136,7 @@ public sealed partial class ProductDetailViewModel : ObservableObject
 			return;
 
 		_favorites.Toggle(Product.Id);
-		OnPropertyChanged(nameof(FavoriteLabel));
-		OnPropertyChanged(nameof(IsFavorite));
-		OnPropertyChanged(nameof(FavoriteGlyph));
+		UpdateFavoriteFlag();
 	}
 
 	[RelayCommand]

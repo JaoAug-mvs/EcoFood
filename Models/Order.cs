@@ -1,6 +1,5 @@
 namespace EcoFood.Models;
 
-/// <summary>Pedido simulado (ativo ou já retirado) exibido na tela Pedidos.</summary>
 public sealed class Order
 {
 	public required string Id { get; init; }
@@ -14,8 +13,6 @@ public sealed class Order
 
 	public string Address { get; init; } = "";
 	public int Quantity { get; init; } = 1;
-
-	/// <summary>True quando ainda espera retirada; caso contrário faz parte do histórico.</summary>
 	public bool IsActive { get; init; }
 
 	public string BookingCode => $"#EF{Id.Replace("ord_", "").ToUpper()}";

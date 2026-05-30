@@ -1,6 +1,5 @@
 namespace EcoFood.Services;
 
-/// <seealso cref="IFavoritesService"/>
 public sealed class FavoritesService : IFavoritesService
 {
 	readonly HashSet<string> _favoriteIds = new(StringComparer.Ordinal);

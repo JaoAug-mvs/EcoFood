@@ -7,7 +7,6 @@ using Microsoft.Maui.ApplicationModel;
 
 namespace EcoFood.ViewModels;
 
-/// <summary>Listagem dos produtos favoritados pelo usuário (sessão atual).</summary>
 public sealed partial class FavoritesViewModel : ObservableObject
 {
 	readonly IMockDataService _mock;

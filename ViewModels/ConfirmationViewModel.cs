@@ -6,7 +6,6 @@ using EcoFood.ViewModels.Base;
 
 namespace EcoFood.ViewModels;
 
-/// <summary>Revisão final da reserva antes de confirmar o pedido e gerar o comprovante.</summary>
 public sealed partial class ConfirmationViewModel : ObservableObject
 {
     readonly ReservationSession _session;
@@ -46,17 +45,10 @@ public sealed partial class ConfirmationViewModel : ObservableObject
 
         var booking = new ConfirmedBooking
         {
-            ProductId = Product.Id,
             ProductName = Product.Name,
-            RestaurantName = Product.Restaurant.Name,
-            RestaurantAddress = Product.Restaurant.Address,
             PickupWindow = Product.PickupWindow,
-            PaymentMethodLabel = "Pagamento na retirada 💵",
             BookingCode = $"REF{DateTime.UtcNow:HHmmss}",
             Total = Product.DiscountedPrice * Math.Max(1, _session.DraftQuantity),
-            Quantity = Math.Max(1, _session.DraftQuantity),
-            RestaurantLatitude = Product.Restaurant.Latitude,
-            RestaurantLongitude = Product.Restaurant.Longitude,
             ProductImageUrl = Product.ImageUrl
         };
 

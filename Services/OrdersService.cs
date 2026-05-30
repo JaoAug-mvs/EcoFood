@@ -3,7 +3,6 @@ using EcoFood.Models;
 
 namespace EcoFood.Services;
 
-/// <seealso cref="IOrdersService"/>
 public sealed class OrdersService : IOrdersService
 {
 	public OrdersService()
@@ -21,7 +20,6 @@ public sealed class OrdersService : IOrdersService
 
 	void IOrdersService.Add(Order order)
 	{
-		// Novos ficam sempre no topo (lista vertical).
 		if (Orders.Count == 0)
 			Orders.Add(order);
 		else

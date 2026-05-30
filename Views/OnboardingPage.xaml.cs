@@ -1,4 +1,4 @@
-using EcoFood.ViewModels;
+﻿using EcoFood.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace EcoFood.Views;
@@ -19,7 +19,7 @@ public partial class OnboardingPage : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        _vm.CurrentIndex = 0; // sempre começa no slide 1, sem timing hack
+        _vm.CurrentIndex = 0;
     }
 
     void OnSkipClicked(object? sender, EventArgs e)

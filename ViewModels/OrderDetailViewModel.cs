@@ -2,6 +2,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using EcoFood.Models;
 using EcoFood.Services;
+using EcoFood.ViewModels.Base;
 
 namespace EcoFood.ViewModels;
 
@@ -45,7 +46,7 @@ public sealed partial class OrderDetailViewModel : ObservableObject
 		: Color.FromArgb("#6B7280");
 
 	public string TotalFormatted =>
-		CurrentOrder is null ? "" : $"R$ {CurrentOrder.Total:F2}".Replace(".", ",");
+		CurrentOrder is null ? "" : ViewModelLocalization.Money(CurrentOrder.Total);
 
 	public string QuantityLabel =>
 		CurrentOrder is null ? "" :

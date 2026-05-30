@@ -47,7 +47,7 @@ public sealed partial class ProfileViewModel : ObservableObject
 		var i = _mock.CurrentUser.Impact;
 		Impact.Meals = $"{i.SavedMeals}";
 		Impact.MoneyLabel = ViewModelLocalization.Money(i.TotalSavingsMoney);
-		Impact.Co2 = $"{i.SavedCo2Kg:N1} kg".Replace(",", ",");
+		Impact.Co2 = $"{i.SavedCo2Kg:N1} kg";
 		OnPropertyChanged(nameof(Impact));
 	}
 

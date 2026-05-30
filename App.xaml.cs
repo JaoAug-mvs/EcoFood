@@ -18,7 +18,6 @@ public partial class App : MauiApplication
 		var services = Current?.Handler?.MauiContext?.Services
 			?? throw new InvalidOperationException("Serviços MAUI indisponíveis em CreateWindow.");
 
-		// Splash sempre aparece — é a tela de boas-vindas/login
 		var startPage = services.GetRequiredService<SplashPage>();
 
 		var window = new MauiWindow(startPage)
